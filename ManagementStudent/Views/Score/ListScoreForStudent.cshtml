@@ -1,0 +1,60 @@
+﻿@model List<ManagementStudent.Models.Score>
+@{
+    ViewBag.Title = "ListScoreForStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Điểm số các môn</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active">Điểm số cá nhân</li>
+        </ol>
+
+        <div class="card mb-4">
+            <div class="card-header">
+              
+                </button>
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Môn</th>
+                            <th>Điểm </th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên Hoc Hàm</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @{
+                            var index = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            index++;
+                            var idModelDel = "exampleModalDel" + item.id_score;
+                            var idEx1 = "#exampleModalLabel" + item.id_score;
+                            <tr>
+                                <td>@index</td>
+                                <td>@item.Subject.name</td>
+                                <td>@item.point</td>
+                            
+                            </tr>
+                          
+                            <!-- Modal Update-->
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</main>
+<!-- Modal Add-->
