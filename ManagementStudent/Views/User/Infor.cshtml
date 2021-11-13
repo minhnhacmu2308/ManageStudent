@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Infor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main>
+    <div class="container-fluid px-4">
+        <h4 class="mt-1">Thông tin học sinh</h4>
+
+        <div class="card mb-4">
+
+            <div class="card-body">
+                <form enctype="multipart/form-data" action="/Merchant/AddNew" method="post">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Họ và tên <span style="color:red">* </span>:</label>
+                                <input type="text" class="form-control" id="tenphim" name="hoten" tabindex="1" value="@ViewBag.Profile.fullname" readonly required maxlength="20">
+                            </div>
+                            @if (ViewBag.Profile.gender == 0)
+                            {
+                                <div class="col-6">
+                                    <label for="category-film" class="col-form-label">Giới tính:</label>
+                                    <input type="text" class="form-control" id="dienvien" value="Nữ" name="sdt" tabindex="2" readonly required>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-6">
+                                    <label for="category-film" class="col-form-label">Giới tính:</label>
+                                    <input type="text" class="form-control" id="dienvien" value="Nam" name="sdt" tabindex="2" readonly required>
+                                </div>
+                            }
+
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Lớp :</label>
+                                <input type="text" class="form-control" id="dienvien" value="@ViewBag.Profile.grade" name="sdt" tabindex="2" readonly required>
+                            </div>
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Địa chỉ<span style="color:red">* </span>:</label>
+                                <input type="text" class="form-control" id="tenphim" name="hoten" value="@ViewBag.Profile.address" tabindex="1" readonly required maxlength="20">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Tài khoản :</label>
+                                <input type="text" class="form-control" id="tenphim" name="email" tabindex="1" value="@ViewBag.Profile.username" readonly required maxlength="20">
+                            </div>
+                            
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Mật khẩu :</label>
+                                <input type="text" class="form-control" id="tenphim" name="email" value="@ViewBag.Profile.password" readonly tabindex="1" autofocus required maxlength="20">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+

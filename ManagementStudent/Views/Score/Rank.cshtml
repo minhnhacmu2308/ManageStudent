@@ -1,50 +1,45 @@
-﻿@model List<ManagementStudent.Models.Score>
+﻿
 @{
-    ViewBag.Title = "ListScoreForStudent";
+    ViewBag.Title = "Rank";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Điểm số các môn</h1>
-        
+        <h1 class="mt-4">Bảng xếp hạng điểm trung bình của Học sinh</h1>
         <div class="card mb-4">
             <div class="card-header">
-              
-            
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Môn</th>
-                            <th>Điểm </th>
+                            <th>Tên học sinh</th>
+                            <th>Điểm trung bình cộng các môn học</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>STT</th>
-                            <th>Tên Hoc Hàm</th>
-                            <th>Action</th>
+                            <th>Tên học sinh</th>
+                            <th>Điểm trung bình cộng các môn học</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         @{
                             var index = 0;
                         }
-                        @foreach (var item in Model)
+                        @foreach (var item in ViewBag.Rank)
                         {
                             index++;
-                            var idModelDel = "exampleModalDel" + item.id_score;
-                            var idEx1 = "#exampleModalLabel" + item.id_score;
                             <tr>
                                 <td>@index</td>
-                                <td>@item.Subject.name</td>
-                                <td>@item.point</td>
-                            
+                                <td>@item.fullname</td>
+                                <td>
+                                    @item.diemtb
+                                </td>
                             </tr>
-                          
-                            <!-- Modal Update-->
+                           
                         }
                     </tbody>
                 </table>
@@ -53,4 +48,4 @@
         </div>
     </div>
 </main>
-<!-- Modal Add-->
+

@@ -130,6 +130,7 @@
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\ScoreController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\ManageDbContext.cs" />
+    <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\Score.cs" />
@@ -219,6 +221,9 @@
     <Content Include="Views\Score\Index.cshtml" />
     <Content Include="Views\Score\ListScoreForStudent.cshtml" />
     <Content Include="Views\Subject\Index.cshtml" />
+    <Content Include="Views\Schedule\Index.cshtml" />
+    <Content Include="Views\Score\Rank.cshtml" />
+    <Content Include="Views\User\Infor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

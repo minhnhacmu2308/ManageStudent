@@ -22,7 +22,11 @@ namespace ManagementStudent.Controllers
             ViewBag.listSubject = subjectRepository.getAll();
             return View(list);
         }
-
+        public ActionResult Rank()
+        {
+            ViewBag.Rank = scoreRepository.getRank();
+            return View();
+        }
         public ActionResult Add(FormCollection form)
         {
             Score score = new Score();

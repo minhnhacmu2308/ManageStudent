@@ -1,0 +1,258 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Thời khóa biểu</h1>
+        @{ var userInfomatiom = (ManagementStudent.Models.User)Session["USER"]; }
+        <div class="card mb-4">
+            <div class="card-header">
+                @if (ViewBag.Msg != null)
+                {
+                    if (ViewBag.Msg == "1")
+                    {
+                        <div class="alert alert-success">
+                            <strong>Thành công</strong>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger">
+                            <strong>Môn học không tồn tại</strong>
+                        </div>
+                    }
+                }
+                @if (userInfomatiom.Role.id_role == 1)
+                {
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#exampleModalAdd">
+                        Thêm
+                    </button>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                            data-bs-target="#exampleModalEdit">
+                        Cập nhập
+                    </button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#exampleModalDelete">
+                        Xóa
+                    </button>
+                }
+                </div>
+            <div class="card-body">
+                <table class="table table-bordered border-primary">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Thứ 2</th>
+                            <th>Thứ 3</th>
+                            <th>Thứ 4</th>
+                            <th>Thứ 5</th>
+                            <th>Thứ 6</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <th>Sáng</th>
+                            @foreach (var item in ViewBag.ListD)
+                            {
+                                <td>
+                                    @{ var listS = new ManagementStudent.Repositories.ScheduleRepository().getSchedule(item.id_day, 1);}
+                                    @foreach (var item1 in listS)
+                                    {
+                                        <p>@item1.Subject.name</p>
+                                    }
+                                </td>
+                            }
+                        </tr>
+                        <tr>
+                            <th>Chiều</th>
+                            @foreach (var item in ViewBag.ListD)
+                            {
+                                <td>
+                                    @{ var listS = new ManagementStudent.Repositories.ScheduleRepository().getSchedule(item.id_day, 2);}
+                                    @foreach (var item1 in listS)
+                                    {
+                                        <p>@item1.Subject.name</p>
+                                    }
+                                </td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</main>
+<!-- Modal Add-->
+<div class="modal fade" id="exampleModalAdd" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm thời khóa biểu </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" action="/Schedule/Add" method="post">
+                    <div class="col">
+                        <div class="col-12">
+                            <label for="category-film" class="col-form-label"></label>
+                            <select class="form-select" aria-label="Default select example" id="thu" tabindex="8" name="thu" required>
+                                <option value="" selected>Chọn thứ</option>
+                                @foreach (var item in ViewBag.ListD)
+                                {
+                                    <option value="@item.id_day">@item.name</option>
+
+                                }
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="category-film" class="col-form-label"></label>
+                            <select class="form-select" aria-label="Default select example" id="buoi" tabindex="8" name="buoi" required>
+                                <option value="" selected>Chọn buổi</option>
+                                <option value="1">Sáng</option>
+                                <option value="2">Chiều</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="category-film" class="col-form-label"></label>
+                            <select class="form-select" aria-label="Default select example" id="monhoc" tabindex="8" name="monhoc" required>
+                                <option value="" selected>Chọn môn học</option>
+                                @foreach (var item2 in ViewBag.listSubject)
+                                {
+                                    <option value="@item2.id_subject">@item2.name</option>
+
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button style="width:100px" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button style="width:100px" type="submit" class="btn btn-primary">Thêm </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Edit-->
+<div class="modal fade" id="exampleModalEdit" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cập nhập thời khóa biểu </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" action="/Schedule/Edit" method="post">
+                    <div class="col">
+                        <div class="col-12">
+                            <label for="category-film" class="col-form-label"></label>
+                            <select class="form-select" aria-label="Default select example" id="thu" tabindex="8" name="thu" required>
+                                <option value="" selected>Chọn thứ</option>
+                                @foreach (var item in ViewBag.ListD)
+                                {
+                                    <option value="@item.id_day">@item.name</option>
+
+                                }
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="category-film" class="col-form-label"></label>
+                            <select class="form-select" aria-label="Default select example" id="buoi" tabindex="8" name="buoi" required>
+                                <option value="" selected>Chọn buổi</option>
+                                <option value="1">Sáng</option>
+                                <option value="2">Chiều</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="category-film" class="col-form-label"></label>
+                            <select class="form-select" aria-label="Default select example" id="monhoc" tabindex="8" name="monhocold" required>
+                                <option value="" selected>Chọn môn học muốn thay đổi</option>
+                                @foreach (var item2 in ViewBag.listSubject)
+                                {
+                                    <option value="@item2.id_subject">@item2.name</option>
+
+                                }
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="category-film" class="col-form-label"></label>
+                            <select class="form-select" aria-label="Default select example" id="monhoc" tabindex="8" name="monhocnew" required>
+                                <option value="" selected>Chọn môn học mới</option>
+                                @foreach (var item2 in ViewBag.listSubject)
+                                {
+                                    <option value="@item2.id_subject">@item2.name</option>
+
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button style="width:100px" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button style="width:100px" type="submit" class="btn btn-primary">Thêm </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Delete-->
+<div class="modal fade" id="exampleModalDelete" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa thời khóa biểu </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" action="/Schedule/Delete" method="post">
+                    <div class="col">
+                        <div class="col-12">
+                            <label for="category-film" class="col-form-label"></label>
+                            <select class="form-select" aria-label="Default select example" id="thu" tabindex="8" name="thu" required>
+                                <option value="" selected>Chọn thứ</option>
+                                @foreach (var item in ViewBag.ListD)
+                                {
+                                    <option value="@item.id_day">@item.name</option>
+
+                                }
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="category-film" class="col-form-label"></label>
+                            <select class="form-select" aria-label="Default select example" id="buoi" tabindex="8" name="buoi" required>
+                                <option value="" selected>Chọn buổi</option>
+                                <option value="1">Sáng</option>
+                                <option value="2">Chiều</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="category-film" class="col-form-label"></label>
+                            <select class="form-select" aria-label="Default select example" id="monhoc" tabindex="8" name="monhoc" required>
+                                <option value="" selected>Chọn môn học muốn xóa</option>
+                                @foreach (var item2 in ViewBag.listSubject)
+                                {
+                                    <option value="@item2.id_subject">@item2.name</option>
+
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button style="width:100px" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button style="width:100px" type="submit" class="btn btn-danger">Xóa </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -52,5 +52,10 @@ namespace ManagementStudent.Repositories
         {
             return myDb.scores.Where(x => x.id_user == id).ToList();
         }
+        public List<Rank> getRank()
+        {
+            string sql = "Select b.fullname, ROUND(avg(point), 2) as 'diemtb' From Scores as a, Users as b Where a.id_user = b.id_user Group by b.fullname Order by ROUND(avg(point), 2) DESC";
+            return myDb.Database.SqlQuery<Rank>(sql).ToList();
+        }
     }
 }

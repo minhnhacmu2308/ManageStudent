@@ -19,7 +19,12 @@ namespace ManagementStudent.Controllers
             return View(listStudent);
         }
 
-       
+        public ActionResult Infor()
+        {
+            var userInfomatiom = (User)Session["USER"];
+            ViewBag.Profile = userRepository.getUserById(userInfomatiom.id_user);
+            return View();
+        }
 
         public ActionResult ListGiangVien(string msg)
         {
@@ -35,7 +40,13 @@ namespace ManagementStudent.Controllers
             userRepository.delete(Int32.Parse(id));
             return RedirectToAction("Index", new { msg = "1" });
         }
-
+        [HttpPost]
+        public ActionResult DeleteGv(FormCollection form)
+        {
+            var id = form["id"];
+            userRepository.delete(Int32.Parse(id));
+            return RedirectToAction("ListGiangVien", new { msg = "1" });
+        }
         [HttpPost]
         public ActionResult Add(FormCollection form)
         {
@@ -73,7 +84,7 @@ namespace ManagementStudent.Controllers
             principal.id_role = Int32.Parse(form["id_role"]);
             principal.gender = Int32.Parse(form["gender"]);
             principal.address = form["address"];
-            principal.grade = "null";
+            principal.grade = form["grade"];
             principal.status = 1;
             var obj = userRepository.checkExistName(form["username"]);
             if (obj == null)

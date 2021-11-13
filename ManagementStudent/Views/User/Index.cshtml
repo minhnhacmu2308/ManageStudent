@@ -6,10 +6,7 @@
 <main>
     <div class="container-fluid px-4">
         <h1 class="mt-4">Quản lí học sinh</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-            <li class="breadcrumb-item active">Quản lí học sinh</li>
-        </ol>
+       
         @{ var userInfomatiom = (ManagementStudent.Models.User)Session["USER"]; }
         <div class="card mb-4">
             <div class="card-header">
@@ -39,7 +36,7 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Tên sinh viên</th>
+                            <th>Tên học sinh</th>
                             <th>Địa chỉ </th>
                             <th>Giới tính </th>
                             <th>Lớp </th>
@@ -98,7 +95,7 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    Tên người dùng : @item.fullname
+                                                    Học sinh : @item.fullname
                                                     <form action="/User/Delete" method="post">
                                                         <input type="hidden" class="form-control" id="id" name="id" value="@item.id_user">
                                                         <div class="modal-footer" style="margin-top: 20px">
@@ -154,12 +151,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-6 ">
                                                             <label for="category-film" class="col-form-label">Lớp: <span style="color:red">* </span>:</label>
                                                             <input type="text" class="form-control" id="daodien" value="@item.grade" name="grade" tabindex="3" required>
                                                             <input type="hidden" class="form-control" id="daodien" value="@item.id_user" name="id" tabindex="3" required>
                                                         </div>
-                                                        <div class="col-6 mt-2 ">
+                                                        <div class="col-6 mt-3 ">
                                                             <label for="exampleFormControlFile1">Giới tính <span style="color:red">* </span>:</label>
                                                             <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="gender" required>
                                                                 @if (item.gender == 1)
@@ -239,11 +236,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-6 ">
                                 <label for="category-film" class="col-form-label">Lớp: <span style="color:red">* </span>:</label>
                                 <input type="text" class="form-control" id="daodien" name="grade" tabindex="3" required>
                             </div>
-                            <div class="col-6 mt-2 ">
+                            <div class="col-6 mt-3 ">
                                 <label for="exampleFormControlFile1">Giới tính <span style="color:red">* </span>:</label>
                                 <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="gender" required>
                                     <option value="" selected>Chọn giới tính</option>

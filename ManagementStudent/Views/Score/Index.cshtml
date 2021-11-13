@@ -6,11 +6,7 @@
 <main>
     <div class="container-fluid px-4">
         <h1 class="mt-4">Quản lí điểm số</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-            <li class="breadcrumb-item active">Quản lí điểm số</li>
-        </ol>
-
+       
         <div class="card mb-4">
             <div class="card-header">
                 @if (ViewBag.Msg != null)
@@ -39,7 +35,7 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Mã sinh viên</th>
+                            
                             <th>Tên sinh viên</th>
                             <th>Tên môn học </th>
                             <th>Điểm </th>
@@ -64,7 +60,7 @@
                             var idEx1 = "#exampleModalLabel" + item.id_score;
                         <tr>
                             <td>@index</td>
-                            <td>@item.User.id_user</td>
+                            
                             <td>@item.User.fullname</td>
                             <td>@item.Subject.name</td>
                             <td>@item.point</td>

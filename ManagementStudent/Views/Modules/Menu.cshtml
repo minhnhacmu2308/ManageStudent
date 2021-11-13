@@ -5,8 +5,7 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
 
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                   aria-controls="collapseLayouts">
+                <a class="nav-link collapsed" href="/Home/Index">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Bảng điều khiển
 
@@ -33,18 +32,16 @@
 
                     </a>
 
-                    <a class="nav-link collapsed" href="/Score/Index" >
+                    <a class="nav-link collapsed" href="/Score/Index">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Quản lý điểm số
 
                     </a>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                       aria-controls="collapseLayouts">
+                    <a class="nav-link collapsed" href="/Schedule/Index">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Quản lý thời khóa biểu
                     </a>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                       aria-controls="collapseLayouts">
+                    <a class="nav-link collapsed" href="/Score/Rank">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Xếp hạng
                     </a>
@@ -52,30 +49,40 @@
                 else if (userInfomatiom.Role.id_role == 2)
                 {
 
-                    <a class="nav-link collapsed" href="/User/Index" >
+                    <a class="nav-link collapsed" href="/User/Index">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Quản lý học sinh
 
                     </a>
-                    <a class="nav-link collapsed" href="/Score/Index" >
+                    <a class="nav-link collapsed" href="/Score/Index">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Quản lý điểm
 
                     </a>
+                    <a class="nav-link collapsed" href="/Score/Rank">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Xếp hạng
+                    </a>
                 }
                 else
                 {
-
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                       aria-controls="collapseLayouts">
+                    <a class="nav-link collapsed" href="/User/Infor">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Xem thời khóa biểu
+                        Xem thông tin
 
                     </a>
-                    <a class="nav-link collapsed" href="/Score/ListScoreForStudent?id=@userInfomatiom.id_user" >
+                    <a class="nav-link collapsed" href="/Schedule/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Xem thời khóa biểu
+                    </a>
+                    <a class="nav-link collapsed" href="/Score/ListScoreForStudent?id=@userInfomatiom.id_user">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Xem điểm
 
+                    </a>
+                    <a class="nav-link collapsed" href="/Score/Rank">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Xếp hạng
                     </a>
                 }
             </div>
