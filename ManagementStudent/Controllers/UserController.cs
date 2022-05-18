@@ -11,11 +11,13 @@ namespace ManagementStudent.Controllers
     public class UserController : Controller
     {
         UserRepository userRepository = new UserRepository();
+        MajorRepository majorRepository = new MajorRepository();
         // GET: User
         public ActionResult Index(string msg)
         {
             var listStudent = userRepository.getListStudent();
             ViewBag.MSG = msg;
+            ViewBag.listMajor = majorRepository.GetAll();
             return View(listStudent);
         }
 
@@ -55,6 +57,7 @@ namespace ManagementStudent.Controllers
             principal.fullname = form["fullname"];
             principal.username = form["username"];
             principal.password = form["password"];
+            principal.id_major = Int32.Parse(form["id_major"]);
             principal.id_role  = Int32.Parse(form["id_role"]);
             principal.gender = Int32.Parse(form["gender"]);
             principal.address = form["address"];
@@ -110,6 +113,7 @@ namespace ManagementStudent.Controllers
             principal.username = form["username"];
             principal.password = form["password"];
             principal.id_role = Int32.Parse(form["id_role"]);
+            principal.id_major = Int32.Parse(form["id_major"]);
             principal.gender = Int32.Parse(form["gender"]);
             principal.address = form["address"];
             principal.grade = form["grade"];

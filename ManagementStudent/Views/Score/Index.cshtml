@@ -35,10 +35,11 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            
+
                             <th>Tên sinh viên</th>
                             <th>Tên môn học </th>
                             <th>Điểm </th>
+                            <th>Thang điểm </th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -60,10 +61,31 @@
                             var idEx1 = "#exampleModalLabel" + item.id_score;
                         <tr>
                             <td>@index</td>
-                            
+
                             <td>@item.User.fullname</td>
                             <td>@item.Subject.name</td>
                             <td>@item.point</td>
+                            @if (item.point < 4)
+                            {
+                                <td>F</td>
+                            }
+                            else if (item.point < 5)
+                            {
+                                <td>D</td>
+                            }
+                            else if (item.point < 6)
+                            {
+                                <td>C</td>
+                            }
+                            else if (item.point < 7)
+                            {
+                                <td>B</td>
+                            }
+                            else if (item.point >= 8)
+                            {
+                                <td>A</td>
+                            }
+
                             <td>
 
                                 <button style="width:100px" type="button" class="btn btn-primary" data-bs-toggle="modal"

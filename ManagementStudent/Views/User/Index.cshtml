@@ -40,6 +40,7 @@
                             <th>Địa chỉ </th>
                             <th>Giới tính </th>
                             <th>Lớp </th>
+                            <th>Ngành </th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -73,6 +74,7 @@
 
                                 }
                                 <td>@item.grade</td>
+                                <td>@item.Majors.name</td>
                                 <td>
 
                                     <button style="width:100px" type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -178,6 +180,23 @@
                                                             </select>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+
+                                                        <div class="col-6 mt-3 ">
+                                                            <label for="exampleFormControlFile1">Chọn ngành:<span style="color:red">* </span>:</label>
+                                                            <select class="form-select" aria-label="Default select example" id="id_major" tabindex="8" name="id_major" required>
+                                                                <option value="@item.id_major" selected>@item.Majors.name</option>
+                                                                @foreach (var item1 in ViewBag.listMajor)
+                                                                {
+                                                                    if (item.id_major != item1.id_major)
+                                                                    {
+                                                                        <option value="@item1.id_major">@item1.name</option>
+                                                                    }
+
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                    </div>
 
                                                 </div>
 
@@ -244,8 +263,21 @@
                                 <label for="exampleFormControlFile1">Giới tính <span style="color:red">* </span>:</label>
                                 <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="gender" required>
                                     <option value="" selected>Chọn giới tính</option>
-                                    <option value="1" >Nam</option>
-                                    <option value="0" >Nữ</option>
+                                    <option value="1">Nam</option>
+                                    <option value="0">Nữ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            
+                            <div class="col-6 mt-3 ">
+                                <label for="exampleFormControlFile1">Chọn ngành:<span style="color:red">* </span>:</label>
+                                <select class="form-select" aria-label="Default select example" id="id_major" tabindex="8" name="id_major" required>
+                                    <option value="" selected>Chọn nghành</option>
+                                    @foreach (var item in ViewBag.listMajor)
+                                    {
+                                        <option value="@item.id_major">@item.name</option>
+                                    }
                                 </select>
                             </div>
                         </div>

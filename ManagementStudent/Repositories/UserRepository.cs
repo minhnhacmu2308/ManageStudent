@@ -32,6 +32,7 @@ namespace ManagementStudent.Repositories
             obj.id_role = user.id_role;
             obj.username = user.username;
             obj.password = user.password;
+            obj.id_major = user.id_major;
             obj.grade = user.grade;
             obj.gender = user.gender;  
             obj.address = user.address;

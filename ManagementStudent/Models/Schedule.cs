@@ -20,10 +20,13 @@ namespace ManagementStudent.Models
 
         public int id_session { get; set; }
 
+        public int id_major { get; set; }
+
         public virtual Day Day { get; set; }
 
         public virtual Subject Subject { get; set; }
 
         public virtual Session Session { get; set; }
+        public virtual Majors Majors { get; set; }
     }
 }

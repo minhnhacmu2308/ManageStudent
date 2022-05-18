@@ -38,7 +38,9 @@ namespace ManagementStudent.Models
         public int status { get; set; }
 
         public int id_role { get; set; }
+        public int id_major { get; set; }
 
         public virtual Role Role { get; set; }
+        public virtual Majors Majors { get; set; }
     }
 }

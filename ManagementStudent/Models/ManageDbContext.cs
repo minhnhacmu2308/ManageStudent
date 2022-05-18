@@ -14,6 +14,8 @@ namespace ManagementStudent.Models
         }
         public DbSet<Day> days { get; set; }
 
+        public DbSet<Majors> majors { get; set; }
+
         public DbSet<Schedule> schedules { get; set; }
 
         public DbSet<Subject> subjects { get; set; }
