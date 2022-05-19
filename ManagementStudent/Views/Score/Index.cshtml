@@ -37,6 +37,7 @@
                             <th>STT</th>
 
                             <th>Tên sinh viên</th>
+                            <th>Ngành</th>
                             <th>Tên môn học </th>
                             <th>Điểm </th>
                             <th>Thang điểm </th>
@@ -63,6 +64,7 @@
                             <td>@index</td>
 
                             <td>@item.User.fullname</td>
+                            <td>@item.User.Majors.name</td>
                             <td>@item.Subject.name</td>
                             <td>@item.point</td>
                             @if (item.point < 4)
@@ -148,7 +150,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <label for="category-film" class="col-form-label">Điểm: <span style="color:red">* </span>:</label>
-                                                <input type="text" class="form-control" id="daodien" name="point" tabindex="3" value="@item.point" required>
+                                                <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" value="@item.point" required>
                                             </div>
 
                                         </div>
@@ -156,7 +158,7 @@
 
                                         <div class="modal-footer">
                                             <button style="width:100px" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                                            <button style="width:100px" type="submit" class="btn btn-primary">Thêm </button>
+                                            <button style="width:100px" type="submit" class="btn btn-primary">Sửa </button>
                                         </div>
                                     </form>
                                 </div>
@@ -210,7 +212,7 @@
                         </div>
                         <div class="col-12">
                             <label for="category-film" class="col-form-label">Điểm: <span style="color:red">* </span>:</label>
-                            <input type="text" class="form-control" id="daodien" name="point"  tabindex="3" required>
+                            <input type="number" class="form-control" id="daodien" name="point" min="1" max="10"  tabindex="3" required>
                         </div>
 
                     </div>
