@@ -17,5 +17,7 @@ namespace ManagementStudent.Models
         public string name { get; set; }
 
         public int status { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Subject> Subjects { get; set; }
     }
 }

@@ -19,6 +19,8 @@ namespace ManagementStudent.Models
 
         public float point { get; set; }
 
+        public float point2 { get; set; }
+
         public string pointWord { get; set; }
 
         public virtual User User { get; set; }

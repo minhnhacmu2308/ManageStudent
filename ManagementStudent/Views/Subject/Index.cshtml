@@ -36,7 +36,8 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Tên môn</th>                          
+                            <th>Tên môn</th>
+                            <th>Ngành</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -55,48 +56,49 @@
                             index++;
                             var idModelDel = "exampleModalDel" + item.id_subject;
                             var idEx1 = "#exampleModalLabel" + item.id_subject;
-                            <tr>
-                                <td>@index</td>
-                                <td>@item.name</td>                             
-                                <td>
+                        <tr>
+                            <td>@index</td>
+                            <td>@item.name</td>
+                            <td>@item.Majors.name</td>
+                            <td>
 
-                                    <button style="width:100px" type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="@idEx1">
-                                        Sửa
-                                    </button>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDel" style="width:100px" class="btn btn-danger"> Xóa</button>
-                                    <div class="modal fade" id="@idModelDel" tabindex="-1"
-                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn xóa ?</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                </div>
+                                <button style="width:100px" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="@idEx1">
+                                    Sửa
+                                </button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDel" style="width:100px" class="btn btn-danger"> Xóa</button>
+                                <div class="modal fade" id="@idModelDel" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn xóa ?</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
 
-                                                <div class="modal-body">
-                                                    Môn : @item.name
-                                                    <form action="/Subject/Delete" method="post">
-                                                        <input type="hidden" class="form-control" id="id" name="id" value="@item.id_subject">
-                                                        <div class="modal-footer" style="margin-top: 20px">
-                                                            <button style="width:100px" type="button" class="btn btn-secondary"
-                                                                    data-bs-dismiss="modal">
-                                                                Đóng
-                                                            </button>
-                                                            <button style="width:100px" type="submit" class="btn btn-danger"> Xóa</button>
+                                            <div class="modal-body">
+                                                Môn : @item.name
+                                                <form action="/Subject/Delete" method="post">
+                                                    <input type="hidden" class="form-control" id="id" name="id" value="@item.id_subject">
+                                                    <div class="modal-footer" style="margin-top: 20px">
+                                                        <button style="width:100px" type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">
+                                                            Đóng
+                                                        </button>
+                                                        <button style="width:100px" type="submit" class="btn btn-danger"> Xóa</button>
 
-                                                        </div>
+                                                    </div>
 
-                                                    </form>
-
-                                                </div>
+                                                </form>
 
                                             </div>
+
                                         </div>
                                     </div>
-                                </td>
-                            </tr>
+                                </div>
+                            </td>
+                        </tr>
                             var idEx = "exampleModalLabel" + item.id_subject;
                             <div class="modal fade" id="@idEx" tabindex="-1"
                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -114,6 +116,20 @@
                                                         <label for="category-film" class="col-form-label">Tên môn: </label>
                                                         <input type="hidden" class="form-control" id="daodien" name="id" value="@item.id_subject" tabindex="3" required>
                                                         <input type="text" class="form-control" id="daodien" name="name" value="@item.name" tabindex="3" required>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <label for="exampleFormControlFile1">Chọn ngành:<span style="color:red">* </span>:</label>
+                                                        <select class="form-select" aria-label="Default select example" id="id_major" tabindex="8" name="id_major" required>
+                                                            <option value="@item.id_major" selected>@item.Majors.name</option>
+                                                            @foreach (var item1 in ViewBag.listMajor)
+                                                            {
+                                                                if (item.id_major != item1.id_major)
+                                                                {
+                                                                    <option value="@item1.id_major">@item1.name</option>
+                                                                }
+
+                                                            }
+                                                        </select>
                                                     </div>
                                                     
                                                 </div>
@@ -154,6 +170,16 @@
                         <div class="col-12">
                             <label for="category-film" class="col-form-label">Tên môn: <span style="color:red">* </span>:</label>
                             <input type="text" class="form-control" id="daodien" name="name" tabindex="3" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="exampleFormControlFile1">Chọn ngành:<span style="color:red">* </span>:</label>
+                            <select class="form-select" aria-label="Default select example" id="id_major" tabindex="8" name="id_major" required>
+                                <option value="" selected>Chọn nghành</option>
+                                @foreach (var item in ViewBag.listMajor)
+                                {
+                                    <option value="@item.id_major">@item.name</option>
+                                }
+                            </select>
                         </div>
 
                     </div>

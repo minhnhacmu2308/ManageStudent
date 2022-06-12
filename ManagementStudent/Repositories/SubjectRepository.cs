@@ -15,9 +15,9 @@ namespace ManagementStudent.Repositories
             return myDb.subjects.ToList();
         }
 
-        public Subject getSubjectByName(string name)
+        public Subject getSubjectByName(string name,int idMajor)
         {
-            return myDb.subjects.FirstOrDefault(x => x.name == name);
+            return myDb.subjects.FirstOrDefault(x => x.name == name && x.id_major ==idMajor);
         }
 
         public void add(Subject subject)
@@ -38,6 +38,7 @@ namespace ManagementStudent.Repositories
             var obj = myDb.subjects.FirstOrDefault(x => x.id_subject == subject.id_subject);
             obj.status = 1;
             obj.name = subject.name;
+            obj.id_major = subject.id_major;
             myDb.SaveChanges();
         }
     }

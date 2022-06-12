@@ -59,6 +59,7 @@
                         {
                             index++;
                             var idModelDel = "exampleModalDel" + item.id_user;
+                            var idModelDel1 = "exampleModalDel1" + item.id_user;
                             var idEx1 = "#exampleModalLabel" + item.id_user;
                             <tr>
                                 <td>@index</td>
@@ -84,8 +85,40 @@
                                     @if (userInfomatiom.id_role == 1)
                                     {
                                         <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDel" style="width:100px" class="btn btn-danger"> Xóa</button>
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDel1" style="width:100px" class="btn btn-warning"> Gửi điểm </button>
                                     }
+                                    <div class="modal fade" id="@idModelDel1" tabindex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Gửi bảng điểm về phụ huynh</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
 
+                                                <div class="modal-body">
+                                                    Học sinh : @item.fullname
+                                                    <form action="/User/Send" method="post">
+                                                        <label for="category-film" class="col-form-label">Email phụ huynh: <span style="color:red"></span>:</label>
+                                                        <input type="text" class="form-control" id="tenphim" name="email" tabindex="1" autofocus required>
+                                                        <input type="hidden" class="form-control" id="tenphim" name="id_user" tabindex="1" value="@item.id_user" autofocus required>
+                                                        <div class="modal-footer" style="margin-top: 20px">
+                                                            <button style="width:100px" type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">
+                                                                Đóng
+                                                            </button>
+                                                            <button style="width:100px" type="submit" class="btn btn-danger"> Gửi</button>
+
+                                                        </div>
+
+                                                    </form>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="modal fade" id="@idModelDel" tabindex="-1"
                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">

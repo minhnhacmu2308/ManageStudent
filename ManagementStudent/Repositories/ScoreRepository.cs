@@ -27,6 +27,7 @@ namespace ManagementStudent.Repositories
             obj.id_user = score.id_user;
             obj.point = score.point;
             obj.id_subject = score.id_subject;
+            obj.point2 = score.point2;
             myDb.SaveChanges();
         }
 

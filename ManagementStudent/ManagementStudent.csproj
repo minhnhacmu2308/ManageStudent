@@ -149,6 +149,18 @@
     <Compile Include="Migrations\202205181655004_new1.designer.cs">
       <DependentUpon>202205181655004_new1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206051620087_news.cs" />
+    <Compile Include="Migrations\202206051620087_news.designer.cs">
+      <DependentUpon>202206051620087_news.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206051641440_new2.cs" />
+    <Compile Include="Migrations\202206051641440_new2.designer.cs">
+      <DependentUpon>202206051641440_new2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206051728375_new3.cs" />
+    <Compile Include="Migrations\202206051728375_new3.designer.cs">
+      <DependentUpon>202206051728375_new3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Majors.cs" />
@@ -197,6 +209,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\html\TemplateEmail.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -260,6 +273,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205181655004_new1.resx">
       <DependentUpon>202205181655004_new1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206051620087_news.resx">
+      <DependentUpon>202206051620087_news.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206051641440_new2.resx">
+      <DependentUpon>202206051641440_new2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206051728375_new3.resx">
+      <DependentUpon>202206051728375_new3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

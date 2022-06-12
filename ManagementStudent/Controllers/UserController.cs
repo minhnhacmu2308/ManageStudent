@@ -2,7 +2,10 @@
 using ManagementStudent.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,6 +15,7 @@ namespace ManagementStudent.Controllers
     {
         UserRepository userRepository = new UserRepository();
         MajorRepository majorRepository = new MajorRepository();
+        ScoreRepository scoreRepository = new ScoreRepository();
         // GET: User
         public ActionResult Index(string msg)
         {
@@ -141,5 +145,50 @@ namespace ManagementStudent.Controllers
             return RedirectToAction("ListGiangVien", new { msg = "1" });
 
         }
+
+        [HttpPost]
+        public ActionResult Send(FormCollection form)
+        {
+            int idUser = Int32.Parse(form["id_user"]);
+            string email = form["email"];
+            var list = scoreRepository.getListScoreById(idUser);
+            string html = "";
+            for(int i = 0; i< list.Count; i++)
+            {
+                html += "<tr>" +
+                    "<td>"+(i+1)+"</td>"+
+                    "<td>" + list[i].Subject.name + "</td>" +
+                    "<td>" + list[i].point + "</td>" +
+                    "<td>" + list[i].point2 + "</td>" +
+                    "</tr>";
+            }
+            string content = System.IO.File.ReadAllText(Server.MapPath("~/Content/html/TemplateEmail.cshtml"));
+            content = content.Replace("{{body}}", html);
+            sendMail(email,content,idUser);
+            return RedirectToAction("Index", new { msg = "1" });
+        }
+
+
+        public void sendMail(string email, string body, int id_user)
+        {
+            var user = userRepository.getUserById(id_user);
+            var formEmailAddress = ConfigurationManager.AppSettings["FormEmailAddress"].ToString();
+            var formEmailDisplayName = ConfigurationManager.AppSettings["FormEmailDisplayName"].ToString();
+            var formEmailPassword = ConfigurationManager.AppSettings["FormEmailPassword"].ToString();
+            var smtpHost = ConfigurationManager.AppSettings["SMTPHost"].ToString();
+            var smtpPort = ConfigurationManager.AppSettings["SMTPPost"].ToString();
+            bool enableSsl = bool.Parse(ConfigurationManager.AppSettings["EnabledSSL"].ToString());
+            MailMessage message = new MailMessage(new MailAddress(formEmailAddress, formEmailDisplayName), new MailAddress(email));
+            message.Subject = "Bảng điểm của học sinh " + user.fullname;
+            message.IsBodyHtml = true;
+            message.Body = body;
+            var client = new SmtpClient();
+            client.Credentials = new NetworkCredential(formEmailAddress, formEmailPassword);
+            client.Host = smtpHost;
+            client.EnableSsl = enableSsl;
+            client.Port = !string.IsNullOrEmpty(smtpPort) ? Convert.ToInt32(smtpPort) : 0;
+            client.Send(message);
+        }
+
     }
 }

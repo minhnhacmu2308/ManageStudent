@@ -11,11 +11,13 @@ namespace ManagementStudent.Controllers
     public class SubjectController : Controller
     {
         SubjectRepository subjectRepository = new SubjectRepository();
+        MajorRepository majorRepository = new MajorRepository();
         // GET: Subject
         public ActionResult Index(string msg)
         {
             var list = subjectRepository.getAll();
             ViewBag.MSG = msg;
+            ViewBag.listMajor = majorRepository.GetAll();
             return View(list);
         }
 
@@ -30,8 +32,9 @@ namespace ManagementStudent.Controllers
         {
             Subject subject = new Subject();
             subject.name = form["name"];
+            subject.id_major = Int32.Parse(form["id_major"]);
             subject.status = 1;
-            var obj = subjectRepository.getSubjectByName(form["name"]);
+            var obj = subjectRepository.getSubjectByName(form["name"], Int32.Parse(form["id_major"]));
             if (obj == null)
             {
                 subjectRepository.add(subject);
@@ -48,8 +51,9 @@ namespace ManagementStudent.Controllers
             Subject subject = new Subject();
             subject.name = form["name"];
             subject.id_subject =  Int32.Parse(form["id"]);
+            subject.id_major = Int32.Parse(form["id_major"]);
             subject.status = 1;
-            var obj = subjectRepository.getSubjectByName(form["name"]);
+            var obj = subjectRepository.getSubjectByName(form["name"], Int32.Parse(form["id_major"]));
             if (obj == null)
             {
                 subjectRepository.update(subject);
@@ -57,7 +61,7 @@ namespace ManagementStudent.Controllers
             }
             else
             {
-                var objNew = subjectRepository.getSubjectByName(form["name"]);
+                var objNew = subjectRepository.getSubjectByName(form["name"], Int32.Parse(form["id_major"]));
                 if (objNew.name.Equals(form["name"]))
                 {
                     subjectRepository.update(subject);

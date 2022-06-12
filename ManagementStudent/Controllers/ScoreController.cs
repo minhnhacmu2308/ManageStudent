@@ -33,7 +33,7 @@ namespace ManagementStudent.Controllers
             score.id_user = Int32.Parse(form["name"]);
             score.id_subject = Int32.Parse(form["subject"]);
             score.point = float.Parse(form["point"]);
-
+            score.point2 = float.Parse(form["point2"]);
             var obj = scoreRepository.checkPointExist(score);
             if (obj == null)
             {
@@ -60,6 +60,7 @@ namespace ManagementStudent.Controllers
             score.id_user = Int32.Parse(form["student"]);
             score.id_subject = Int32.Parse(form["subject"]);
             score.point = float.Parse(form["point"]);
+            score.point2 = float.Parse(form["point2"]);
             scoreRepository.update(score);
             return RedirectToAction("Index", new { msg = "1" });
            

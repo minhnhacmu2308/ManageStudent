@@ -39,8 +39,10 @@
                             <th>Tên sinh viên</th>
                             <th>Ngành</th>
                             <th>Tên môn học </th>
-                            <th>Điểm </th>
-                            <th>Thang điểm </th>
+                            <th>Điểm học kì 1</th>
+                            <th>Thang điểm kì 1</th>
+                            <th>Điểm học kì 2</th>
+                            <th>Thang điểm kì 2</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -87,7 +89,27 @@
                             {
                                 <td>A</td>
                             }
-
+                            <td>@item.point2</td>
+                            @if (item.point2 < 4)
+                            {
+                                <td>F</td>
+                            }
+                            else if (item.point2 < 5)
+                            {
+                                <td>D</td>
+                            }
+                            else if (item.point2 < 6)
+                            {
+                                <td>C</td>
+                            }
+                            else if (item.point2 < 7)
+                            {
+                                <td>B</td>
+                            }
+                            else if (item.point2 >= 8)
+                            {
+                                <td>A</td>
+                            }
                             <td>
 
                                 <button style="width:100px" type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -149,10 +171,13 @@
                                                 <input type="hidden" class="form-control" id="daodien" readonly name="subject" value="@item.id_subject" tabindex="3" required>
                                             </div>
                                             <div class="col-12">
-                                                <label for="category-film" class="col-form-label">Điểm: <span style="color:red">* </span>:</label>
+                                                <label for="category-film" class="col-form-label">Điểm học kì 1: <span style="color:red">* </span>:</label>
                                                 <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" value="@item.point" required>
                                             </div>
-
+                                            <div class="col-12">
+                                                <label for="category-film" class="col-form-label">Điểm học kì 2: <span style="color:red">* </span>:</label>
+                                                <input type="number" class="form-control" id="daodien" name="point2" min="1" max="10" tabindex="3" value="@item.point2" required>
+                                            </div>
                                         </div>
 
 
@@ -194,7 +219,7 @@
                                 <option value="" selected>Chọn học sinh</option>
                                 @foreach (var item1 in ViewBag.listStudent)
                                 {
-                                    <option value="@item1.id_user" >@item1.fullname</option>
+                                    <option value="@item1.id_user">@item1.fullname</option>
 
                                 }
                             </select>
@@ -205,16 +230,19 @@
                                 <option value="" selected>Chọn môn học</option>
                                 @foreach (var item2 in ViewBag.listSubject)
                                 {
-                                    <option value="@item2.id_subject" >@item2.name</option>
+                                    <option value="@item2.id_subject">@item2.name</option>
 
                                 }
                             </select>
                         </div>
                         <div class="col-12">
-                            <label for="category-film" class="col-form-label">Điểm: <span style="color:red">* </span>:</label>
-                            <input type="number" class="form-control" id="daodien" name="point" min="1" max="10"  tabindex="3" required>
+                            <label for="category-film" class="col-form-label">Điểm học kì 1: <span style="color:red">* </span>:</label>
+                            <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
                         </div>
-
+                        <div class="col-12">
+                            <label for="category-film" class="col-form-label">Điểm học kì 2: <span style="color:red">* </span>:</label>
+                            <input type="number" class="form-control" id="daodien" name="point2" min="1" max="10" tabindex="3"  required>
+                        </div>
                     </div>
 
 
