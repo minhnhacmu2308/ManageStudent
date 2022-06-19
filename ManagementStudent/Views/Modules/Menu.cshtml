@@ -21,8 +21,8 @@
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                          data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="/User/Index">Học sinh</a>
-                            <a class="nav-link" href="/User/ListGiangVien">Giáo viên </a>
+                            <a class="nav-link" href="/User/Index">Sinh viên</a>
+                            <a class="nav-link" href="/User/ListGiangVien">Giáo vụ </a>
 
                         </nav>
                     </div>
@@ -41,6 +41,14 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Quản lý thời khóa biểu
                     </a>
+                    <a class="nav-link collapsed" href="/Post/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Quản lý tin tức
+                    </a>
+                    <a class="nav-link collapsed" href="/Feedback/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Quản lý góp ý
+                    </a>
                     <a class="nav-link collapsed" href="/Score/Rank">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Xếp hạng
@@ -48,10 +56,13 @@
                 }
                 else if (userInfomatiom.Role.id_role == 2)
                 {
-
+                    <a class="nav-link collapsed" href="/Post/TinTuc">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Trang thông tin
+                    </a>
                     <a class="nav-link collapsed" href="/User/Index">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Quản lý học sinh
+                        Quản lý sinh viên
 
                     </a>
                     <a class="nav-link collapsed" href="/Score/Index">
@@ -68,8 +79,11 @@
                 {
                     <a class="nav-link collapsed" href="/User/Infor">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Xem thông tin
-
+                        Hồ sơ cá nhân
+                    </a>
+                    <a class="nav-link collapsed" href="/Post/TinTuc">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Trang thông tin
                     </a>
                     <a class="nav-link collapsed" href="/Schedule/Index">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -78,6 +92,11 @@
                     <a class="nav-link collapsed" href="/Score/ListScoreForStudent?id=@userInfomatiom.id_user">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Xem điểm
+
+                    </a>
+                    <a class="nav-link collapsed" href="/Feedback/Add">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Gửi góp ý
 
                     </a>
                     <a class="nav-link collapsed" href="/Score/Rank">

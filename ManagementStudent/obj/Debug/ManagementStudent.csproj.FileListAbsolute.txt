@@ -517,3 +517,8 @@ D:\Project Asp.Net\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.p
 D:\Project Asp.Net\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.news.resources
 D:\Project Asp.Net\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.new2.resources
 D:\Project Asp.Net\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.new3.resources
+D:\.NET MVC\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.news.resources
+D:\.NET MVC\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.new2.resources
+D:\.NET MVC\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.new3.resources
+D:\.NET MVC\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.syll.resources
+D:\.NET MVC\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.updatedb.resources

@@ -110,13 +110,13 @@
                             {
                                 <td>A</td>
                             }
-                            <td>
+                            <td style="width : 220px !important">
 
-                                <button style="width:100px" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                <button style="width:80px" type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="@idEx1">
                                     Sửa
                                 </button>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDel" style="width:100px" class="btn btn-danger"> Xóa</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDel" style="width:80px" class="btn btn-danger"> Xóa</button>
                                 <div class="modal fade" id="@idModelDel" tabindex="-1"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -163,7 +163,7 @@
                                         <div class="col">
 
                                             <div class="col-12">
-                                                <label for="category-film" class="col-form-label">Học sinh: @item.User.fullname </label>
+                                                <label for="category-film" class="col-form-label">Sinh viên: @item.User.fullname </label>
                                                 <input type="hidden" class="form-control" id="daodien" readonly name="student" value="@item.id_user " tabindex="3" required>
                                             </div>
                                             <div class="col-12">
@@ -214,9 +214,9 @@
                     <div class="col">
 
                         <div class="col-12">
-                            <label for="category-film" class="col-form-label">Chọn học sinh: <span style="color:red">* </span>:</label>
+                            <label for="category-film" class="col-form-label">Chọn Sinh viên: <span style="color:red">* </span>:</label>
                             <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="name" required>
-                                <option value="" selected>Chọn học sinh</option>
+                                <option value="" selected>Chọn Sinh viên</option>
                                 @foreach (var item1 in ViewBag.listStudent)
                                 {
                                     <option value="@item1.id_user">@item1.fullname</option>

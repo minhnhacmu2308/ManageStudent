@@ -30,6 +30,10 @@ namespace ManagementStudent.Models
 
         public DbSet<User> users { get; set; }
 
+        public DbSet<Post> posts { get; set; }
+
+        public DbSet<Feedback> feedbacks { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 

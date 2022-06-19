@@ -25,9 +25,10 @@ namespace ManagementStudent.Controllers
             return View(listStudent);
         }
 
-        public ActionResult Infor()
+        public ActionResult Infor(string msg)
         {
             var userInfomatiom = (User)Session["USER"];
+            ViewBag.MSG = msg;
             ViewBag.Profile = userRepository.getUserById(userInfomatiom.id_user);
             return View();
         }
@@ -89,6 +90,7 @@ namespace ManagementStudent.Controllers
             principal.username = form["username"];
             principal.password = form["password"];
             principal.id_role = Int32.Parse(form["id_role"]);
+            principal.id_major = 12;
             principal.gender = Int32.Parse(form["gender"]);
             principal.address = form["address"];
             principal.grade = form["grade"];
@@ -128,6 +130,30 @@ namespace ManagementStudent.Controllers
         }
 
         [HttpPost]
+        public ActionResult SVUpdate(FormCollection form)
+        {
+            User principal = new User();
+
+            principal.id_user = Int32.Parse(form["id_user"]);
+            principal.username = form["username"];
+            principal.password = form["password"];
+            principal.nguontuyen = form["nguontuyen"];
+            principal.truongchuyen = form["truongchuyen"];
+            principal.dantoc = form["dantoc"];
+            principal.tongiao = form["tongiao"];
+            principal.quoctinh = form["quoctinh"];
+            principal.cmnd = form["cmnd"];
+            principal.noicap = form["noicap"];
+            principal.ngaycap = form["ngaycap"];
+            principal.cannang = form["cannang"];
+            principal.chieucao = form["chieucao"];
+            principal.sonambodoi = form["sonambodoi"];
+            principal.sonamtnxp = form["sonamtnxp"];
+            userRepository.SVedit(principal);
+            return RedirectToAction("Infor", new { msg = "1" });
+        }
+
+        [HttpPost]
         public ActionResult UpdateGiangVien(FormCollection form)
         {
             User principal = new User();
@@ -136,6 +162,7 @@ namespace ManagementStudent.Controllers
             principal.fullname = form["fullname"];
             principal.username = form["username"];
             principal.password = form["password"];
+            principal.id_major = 12;
             principal.id_role = Int32.Parse(form["id_role"]);
             principal.gender = Int32.Parse(form["gender"]);
             principal.address = form["address"];
@@ -179,7 +206,7 @@ namespace ManagementStudent.Controllers
             var smtpPort = ConfigurationManager.AppSettings["SMTPPost"].ToString();
             bool enableSsl = bool.Parse(ConfigurationManager.AppSettings["EnabledSSL"].ToString());
             MailMessage message = new MailMessage(new MailAddress(formEmailAddress, formEmailDisplayName), new MailAddress(email));
-            message.Subject = "Bảng điểm của học sinh " + user.fullname;
+            message.Subject = "Bảng điểm của sinh viên " + user.fullname;
             message.IsBodyHtml = true;
             message.Body = body;
             var client = new SmtpClient();

@@ -40,6 +40,26 @@ namespace ManagementStudent.Repositories
             myDb.SaveChanges();
         }
 
+        public void SVedit(User user)
+        {
+            var obj = myDb.users.FirstOrDefault(x => x.id_user == user.id_user);
+            obj.username = user.username;
+            obj.password = user.password;
+            obj.nguontuyen = user.nguontuyen;
+            obj.truongchuyen = user.truongchuyen;
+            obj.dantoc = user.dantoc;
+            obj.tongiao = user.tongiao;
+            obj.quoctinh = user.quoctinh;
+            obj.cmnd = user.cmnd;
+            obj.noicap = user.noicap;
+            obj.ngaycap = user.ngaycap;
+            obj.chieucao = user.chieucao;
+            obj.cannang = user.cannang;
+            obj.sonambodoi = user.sonambodoi;
+            obj.sonamtnxp = user.sonamtnxp;
+            myDb.SaveChanges();
+        }
+
         public void delete(int id)
         {
             var obj = myDb.users.FirstOrDefault(x => x.id_user == id);

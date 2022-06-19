@@ -5,7 +5,7 @@
 }
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Quản lí giáo viên</h1>
+        <h1 class="mt-4">Quản lí giáo vụ</h1>
         
         <div class="card mb-4">
             <div class="card-header">
@@ -20,7 +20,7 @@
                     else
                     {
                         <div class="alert alert-danger">
-                            <strong>Giáo viên đã tồn tại</strong>
+                            <strong>Giáo vụ đã tồn tại</strong>
                         </div>
                     }
 
@@ -35,7 +35,7 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Tên giáo viên</th>
+                            <th>Tên giáo vụ</th>
                             <th>Địa chỉ </th>
                             <th>Giới tính </th>
                             <th>Lớp </th>
@@ -90,7 +90,7 @@
                                             </div>
 
                                             <div class="modal-body">
-                                                Giáo viên : @item.fullname
+                                                Giáo vụ : @item.fullname
                                                 <form action="/User/DeleteGv" method="post">
                                                     <input type="hidden" class="form-control" id="id" name="id" value="@item.id_user">
                                                     <div class="modal-footer" style="margin-top: 20px">

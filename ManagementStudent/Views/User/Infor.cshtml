@@ -5,13 +5,32 @@
 }
 <main>
     <div class="container-fluid px-4">
-        <h4 class="mt-1">Thông tin học sinh</h4>
+        <h4 class="mt-1">Thông tin Sinh viên</h4>
 
         <div class="card mb-4">
-
+            @if (ViewBag.Msg != null)
+            {
+                if (ViewBag.Msg == "1")
+                {
+                    <div class="alert alert-success">
+                        <strong>Thành công</strong>
+                    </div>
+                }
+            }
             <div class="card-body">
-                <form enctype="multipart/form-data" action="/Merchant/AddNew" method="post">
+                <form enctype="multipart/form-data" action="/User/SVUpdate" method="post">
                     <div class="col">
+                        <input type="hidden" class="form-control" id="tenphim" name="id_user" tabindex="1" value="@ViewBag.Profile.id_user" >
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Mã sinh viên :</label>
+                                <input type="text" class="form-control" id="dienvien" value="SV_2022_@ViewBag.Profile.id_user" name="sdt" tabindex="2" readonly required>
+                            </div>
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Ngành :<span style="color:red">* </span>:</label>
+                                <input type="text" class="form-control" id="tenphim" name="hoten" value="@ViewBag.Profile.Majors.name" tabindex="1" readonly required maxlength="20">
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Họ và tên <span style="color:red">* </span>:</label>
@@ -46,16 +65,90 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Tài khoản :</label>
-                                <input type="text" class="form-control" id="tenphim" name="email" tabindex="1" value="@ViewBag.Profile.username" readonly required maxlength="20">
+                                <input type="text" class="form-control" id="tenphim" name="username" tabindex="1" value="@ViewBag.Profile.username" required>
                             </div>
-                            
+
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Mật khẩu :</label>
-                                <input type="text" class="form-control" id="tenphim" name="email" value="@ViewBag.Profile.password" readonly tabindex="1" autofocus required maxlength="20">
+                                <input type="text" class="form-control" id="tenphim" name="password" value="@ViewBag.Profile.password" tabindex="1" required>
                             </div>
 
                         </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Nguồn tuyển :</label>
+                                <input type="text" class="form-control" id="tenphim" name="nguontuyen" tabindex="1" value="@ViewBag.Profile.nguontuyen" required>
+                            </div>
 
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Trường chuyển :</label>
+                                <input type="text" class="form-control" id="tenphim" name="truongchuyen" value="@ViewBag.Profile.truongchuyen" tabindex="1" autofocus required>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Dân tộc :</label>
+                                <input type="text" class="form-control" id="tenphim" name="dantoc" tabindex="1" value="@ViewBag.Profile.dantoc" required>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Tôn giáo :</label>
+                                <input type="text" class="form-control" id="tenphim" name="tongiao" value="@ViewBag.Profile.tongiao" tabindex="1" autofocus required>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Quốc tịch :</label>
+                                <input type="text" class="form-control" id="tenphim" name="quoctinh" tabindex="1" value="@ViewBag.Profile.quoctinh" required>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Số CMND :</label>
+                                <input type="text" class="form-control" id="tenphim" name="cmnd" value="@ViewBag.Profile.cmnd" tabindex="1" autofocus required>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Nơi cấp :</label>
+                                <input type="text" class="form-control" id="tenphim" name="noicap" tabindex="1" value="@ViewBag.Profile.noicap" required>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Ngày cấp :</label>
+                                <input type="date" class="form-control" id="tenphim" name="ngaycap" value="@ViewBag.Profile.ngaycap" tabindex="1" autofocus required>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Chiều cao :</label>
+                                <input type="text" class="form-control" id="tenphim" name="chieucao" tabindex="1" value="@ViewBag.Profile.chieucao" required>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Cân nặng :</label>
+                                <input type="text" class="form-control" id="tenphim" name="cannang" value="@ViewBag.Profile.cannang" tabindex="1" autofocus required>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Số năm bộ đội :</label>
+                                <input type="text" class="form-control" id="tenphim" name="sonambodoi" tabindex="1" value="@ViewBag.Profile.sonambodoi" required>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Số năm TNXP :</label>
+                                <input type="text" class="form-control" id="tenphim" name="sonamtnxp" value="@ViewBag.Profile.sonamtnxp" tabindex="1" autofocus required>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="margin-top: 20px">
+                        <button style="width:100px" type="submit" class="btn btn-info"> Cập nhập</button>
                     </div>
                 </form>
             </div>

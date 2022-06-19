@@ -5,7 +5,7 @@
 }
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Quản lí học sinh</h1>
+        <h1 class="mt-4">Quản lí Sinh viên</h1>
        
         @{ var userInfomatiom = (ManagementStudent.Models.User)Session["USER"]; }
         <div class="card mb-4">
@@ -35,8 +35,8 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>STT</th>
-                            <th>Tên học sinh</th>
+                            <th>Mã sinh viên</th>
+                            <th>Tên Sinh viên</th>
                             <th>Địa chỉ </th>
                             <th>Giới tính </th>
                             <th>Lớp </th>
@@ -44,13 +44,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>STT</th>
-                            <th>Tên Hoc Hàm</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
+                    
                     <tbody>
                         @{
                             var index = 0;
@@ -59,10 +53,11 @@
                         {
                             index++;
                             var idModelDel = "exampleModalDel" + item.id_user;
+                            var idModelDes = "exampleModalDes" + item.id_user;
                             var idModelDel1 = "exampleModalDel1" + item.id_user;
                             var idEx1 = "#exampleModalLabel" + item.id_user;
                             <tr>
-                                <td>@index</td>
+                                <td>SV_2022_@item.id_user</td>
                                 <td>@item.fullname</td>
                                 <td>@item.address</td>
                                 @if (item.gender == 0)
@@ -82,10 +77,12 @@
                                             data-bs-target="@idEx1">
                                         Sửa
                                     </button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDes" style="width:100px" class="btn btn-info"> Chi tiết </button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDel1" style="width:100px" class="btn btn-warning"> Gửi điểm </button>
                                     @if (userInfomatiom.id_role == 1)
                                     {
                                         <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDel" style="width:100px" class="btn btn-danger"> Xóa</button>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDel1" style="width:100px" class="btn btn-warning"> Gửi điểm </button>
+
                                     }
                                     <div class="modal fade" id="@idModelDel1" tabindex="-1"
                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -98,7 +95,7 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    Học sinh : @item.fullname
+                                                    Sinh viên : @item.fullname
                                                     <form action="/User/Send" method="post">
                                                         <label for="category-film" class="col-form-label">Email phụ huynh: <span style="color:red"></span>:</label>
                                                         <input type="text" class="form-control" id="tenphim" name="email" tabindex="1" autofocus required>
@@ -130,7 +127,7 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    Học sinh : @item.fullname
+                                                    Sinh viên : @item.fullname
                                                     <form action="/User/Delete" method="post">
                                                         <input type="hidden" class="form-control" id="id" name="id" value="@item.id_user">
                                                         <div class="modal-footer" style="margin-top: 20px">
@@ -152,6 +149,153 @@
                                 </td>
                             </tr>
                             var idEx = "exampleModalLabel" + item.id_user;
+                            <div class="modal fade" id="@idModelDes" tabindex="-1"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Thông tin sinh viên </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form enctype="multipart/form-data" action="/User/Update" method="post">
+                                                <div class="col">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Mã sinh viên :</label>
+                                                            <input type="text" class="form-control" id="dienvien" value="SV_2022_@item.id_user" name="sdt" tabindex="2" readonly required>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Ngành :<span style="color:red">* </span>:</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="hoten" value="@item.Majors.name" tabindex="1" readonly required maxlength="20">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Họ và tên <span style="color:red">* </span>:</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="hoten" tabindex="1" value="@item.fullname" readonly required maxlength="20">
+                                                        </div>
+                                                        @if (item.gender == 0)
+                                                        {
+                                                            <div class="col-6">
+                                                                <label for="category-film" class="col-form-label">Giới tính:</label>
+                                                                <input type="text" class="form-control" id="dienvien" value="Nữ" name="sdt" tabindex="2" readonly required>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="col-6">
+                                                                <label for="category-film" class="col-form-label">Giới tính:</label>
+                                                                <input type="text" class="form-control" id="dienvien" value="Nam" name="sdt" tabindex="2" readonly required>
+                                                            </div>
+                                                        }
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Lớp :</label>
+                                                            <input type="text" class="form-control" id="dienvien" value="@item.grade" name="sdt" tabindex="2" readonly required>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Địa chỉ<span style="color:red">* </span>:</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="hoten" value="@item.address" tabindex="1" readonly required maxlength="20">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Tài khoản :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="username" tabindex="1" value="@item.username" readonly>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Mật khẩu :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="password" value="@item.password" tabindex="1" readonly>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Nguồn tuyển :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="nguontuyen" tabindex="1" value="@item.nguontuyen" readonly>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Trường chuyển :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="truongchuyen" value="@item.truongchuyen" tabindex="1" autofocus readonly>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Dân tộc :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="dantoc" tabindex="1" value="@item.dantoc" readonly>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Tôn giáo :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="tongiao" value="@item.tongiao" tabindex="1" autofocus readonly>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Quốc tịch :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="quoctinh" tabindex="1" value="@item.quoctinh" readonly>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Số CMND :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="cmnd" value="@item.cmnd" tabindex="1" autofocus readonly>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Nơi cấp :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="noicap" tabindex="1" value="@item.noicap" readonly>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Ngày cấp :</label>
+                                                            <input type="date" class="form-control" id="tenphim" name="ngaycap" value="@item.ngaycap" tabindex="1" autofocus readonly>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Chiều cao :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="chieucao" tabindex="1" value="@item.chieucao" readonly>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Cân nặng :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="cannang" value="@item.cannang" tabindex="1" autofocus readonly>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Số năm bộ đội :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="sonambodoi" tabindex="1" value="@item.sonambodoi" readonly>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Số năm TNXP :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="sonamtnxp" value="@item.sonamtnxp" tabindex="1" autofocus readonly>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="modal-footer">
+                                                    <button style="width:100px" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Modal Update-->
                             <div class="modal fade" id="@idEx" tabindex="-1"
                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
