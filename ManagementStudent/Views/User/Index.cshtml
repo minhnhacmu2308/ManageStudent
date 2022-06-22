@@ -332,7 +332,28 @@
                                                     <div class="row">
                                                         <div class="col-6 ">
                                                             <label for="category-film" class="col-form-label">Lớp: <span style="color:red">* </span>:</label>
-                                                            <input type="text" class="form-control" id="daodien" value="@item.grade" name="grade" tabindex="3" required>
+                                                            <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="grade" required>
+                                                                <option value="@item.grade" selected>@item.grade</option>
+                                                                <option value="Xác suất thống kê">Xác suất thống kê</option>
+                                                                <option value="Lập trình web">Lập trình web</option>
+                                                                <option value="Tin học đại cương">Tin học đại cương</option>
+                                                                <option value="Lập trình android">Lập trình android</option>
+                                                                <option value="Mạng máy tính">Mạng máy tính</option>
+                                                                <option value="Thể dục thể chất">Thể dục thể chất</option>
+                                                                <option value="Toán cao cấp">Toán cao cấp</option>
+                                                                <option value="Toán rời rạc">Toán rời rạc</option>
+                                                                <option value="Kinh tế vĩ mô">Kinh tế vĩ mô</option>
+                                                                <option value="Đường lối cách mạng Mac-lenin 1">Đường lối cách mạng Mac-lenin 1</option>
+                                                                <option value="Đường lối cách mạng Mac-lenin 2">Đường lối cách mạng Mac-lenin 2</option>
+                                                                <option value="Tư tưởng Hồ Chí Minh">Tư tưởng Hồ Chí Minh</option>
+                                                                <option value="Đường lối cách mạng">Đường lối cách mạng</option>
+                                                                <option value="Kĩ năng mềm">Kĩ năng mềm</option>
+                                                                <option value="Kinh tế chính trị">Kinh tế chính trị</option>
+                                                                <option value="Tiếng anh chuyên ngành">Tiếng anh chuyên ngành</option>
+                                                                <option value="Tiếng anh 1">Tiếng anh 1</option>
+                                                                <option value="Tiếng anh 2">Tiếng anh 2</option>
+                                                                <option value="Tiếng anh 3">Tiếng anh 3</option>
+                                                            </select>
                                                             <input type="hidden" class="form-control" id="daodien" value="@item.id_user" name="id" tabindex="3" required>
                                                         </div>
                                                         <div class="col-6 mt-3 ">
@@ -434,7 +455,28 @@
                         <div class="row">
                             <div class="col-6 ">
                                 <label for="category-film" class="col-form-label">Lớp: <span style="color:red">* </span>:</label>
-                                <input type="text" class="form-control" id="daodien" name="grade" tabindex="3" required>
+                                <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="grade" required>
+                                    <option value="" selected>Chọn lớp</option>
+                                    <option value="Xác suất thống kê">Xác suất thống kê</option>
+                                    <option value="Lập trình web">Lập trình web</option>
+                                    <option value="Tin học đại cương">Tin học đại cương</option>
+                                    <option value="Lập trình android">Lập trình android</option>
+                                    <option value="Mạng máy tính">Mạng máy tính</option>
+                                    <option value="Thể dục thể chất">Thể dục thể chất</option>
+                                    <option value="Toán cao cấp">Toán cao cấp</option>
+                                    <option value="Toán rời rạc">Toán rời rạc</option>
+                                    <option value="Kinh tế vĩ mô">Kinh tế vĩ mô</option>
+                                    <option value="Đường lối cách mạng Mac-lenin 1">Đường lối cách mạng Mac-lenin 1</option>
+                                    <option value="Đường lối cách mạng Mac-lenin 2">Đường lối cách mạng Mac-lenin 2</option>
+                                    <option value="Tư tưởng Hồ Chí Minh">Tư tưởng Hồ Chí Minh</option>
+                                    <option value="Đường lối cách mạng">Đường lối cách mạng</option>
+                                    <option value="Kĩ năng mềm">Kĩ năng mềm</option>
+                                    <option value="Kinh tế chính trị">Kinh tế chính trị</option>
+                                    <option value="Tiếng anh chuyên ngành">Tiếng anh chuyên ngành</option>
+                                    <option value="Tiếng anh 1">Tiếng anh 1</option>
+                                    <option value="Tiếng anh 2">Tiếng anh 2</option>
+                                    <option value="Tiếng anh 3">Tiếng anh 3</option>
+                                </select>
                             </div>
                             <div class="col-6 mt-3 ">
                                 <label for="exampleFormControlFile1">Giới tính <span style="color:red">* </span>:</label>

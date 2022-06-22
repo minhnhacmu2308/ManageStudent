@@ -77,7 +77,22 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Nguồn tuyển :</label>
-                                <input type="text" class="form-control" id="tenphim" name="nguontuyen" tabindex="1" value="@ViewBag.Profile.nguontuyen" required>
+                                <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="nguontuyen" required>
+                                    @if (ViewBag.Profile.nguontuyen != null)
+                                    {
+                                        <option value="@ViewBag.Profile.nguontuyen" selected>@ViewBag.Profile.nguontuyen</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="" selected>Chọn nguồn tuyển</option>
+                                    }
+                                    <option value="Trúng tuyển">Trúng tuyển</option>
+                                    <option value="Chuyển trường">Chuyển trường</option>
+                                    <option value="Cử tuyển">Cử tuyển</option>
+                                    <option value="Xét tuyển">Xét tuyển</option>
+                                    <option value="Tuyển thẳng">Tuyển thẳng</option>
+                                    <option value="Nguồn khác">Nguồn khác</option>
+                                </select>
                             </div>
 
                             <div class="col-6">

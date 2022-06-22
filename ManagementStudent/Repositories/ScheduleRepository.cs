@@ -20,7 +20,7 @@ namespace ManagementStudent.Repositories
         }
         public void add(Schedule schedule)
         {
-            schedule.id_major = 1;
+            schedule.id_major = 12;
             myDb.schedules.Add(schedule);
             myDb.SaveChanges();
         }
