@@ -77,87 +77,72 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Nguồn tuyển :</label>
-                                <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="nguontuyen" required>
-                                    @if (ViewBag.Profile.nguontuyen != null)
-                                    {
-                                        <option value="@ViewBag.Profile.nguontuyen" selected>@ViewBag.Profile.nguontuyen</option>
-                                    }
-                                    else
-                                    {
-                                        <option value="" selected>Chọn nguồn tuyển</option>
-                                    }
-                                    <option value="Trúng tuyển">Trúng tuyển</option>
-                                    <option value="Chuyển trường">Chuyển trường</option>
-                                    <option value="Cử tuyển">Cử tuyển</option>
-                                    <option value="Xét tuyển">Xét tuyển</option>
-                                    <option value="Tuyển thẳng">Tuyển thẳng</option>
-                                    <option value="Nguồn khác">Nguồn khác</option>
-                                </select>
+                                <input type="text" class="form-control" id="tenphim" name="truongchuyen" value="@ViewBag.Profile.nguontuyen" tabindex="1" autofocus readonly>
                             </div>
 
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Trường chuyển :</label>
-                                <input type="text" class="form-control" id="tenphim" name="truongchuyen" value="@ViewBag.Profile.truongchuyen" tabindex="1" autofocus required>
+                                <input type="text" class="form-control" id="tenphim" name="truongchuyen" value="@ViewBag.Profile.truongchuyen" tabindex="1" autofocus readonly>
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Dân tộc :</label>
-                                <input type="text" class="form-control" id="tenphim" name="dantoc" tabindex="1" value="@ViewBag.Profile.dantoc" required>
+                                <input type="text" class="form-control" id="tenphim" name="dantoc" tabindex="1" value="@ViewBag.Profile.dantoc" readonly>
                             </div>
 
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Tôn giáo :</label>
-                                <input type="text" class="form-control" id="tenphim" name="tongiao" value="@ViewBag.Profile.tongiao" tabindex="1" autofocus required>
+                                <input type="text" class="form-control" id="tenphim" name="tongiao" value="@ViewBag.Profile.tongiao" tabindex="1" autofocus readonly>
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Quốc tịch :</label>
-                                <input type="text" class="form-control" id="tenphim" name="quoctinh" tabindex="1" value="@ViewBag.Profile.quoctinh" required>
+                                <input type="text" class="form-control" id="tenphim" name="quoctinh" tabindex="1" value="@ViewBag.Profile.quoctinh" readonly>
                             </div>
 
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Số CMND :</label>
-                                <input type="text" class="form-control" id="tenphim" name="cmnd" value="@ViewBag.Profile.cmnd" tabindex="1" autofocus required>
+                                <input type="text" class="form-control" id="tenphim" name="cmnd" value="@ViewBag.Profile.cmnd" tabindex="1" autofocus readonly>
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Nơi cấp :</label>
-                                <input type="text" class="form-control" id="tenphim" name="noicap" tabindex="1" value="@ViewBag.Profile.noicap" required>
+                                <input type="text" class="form-control" id="tenphim" name="noicap" tabindex="1" value="@ViewBag.Profile.noicap" readonly>
                             </div>
 
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Ngày cấp :</label>
-                                <input type="date" class="form-control" id="tenphim" name="ngaycap" value="@ViewBag.Profile.ngaycap" tabindex="1" autofocus required>
+                                <input type="date" class="form-control" id="tenphim" name="ngaycap" value="@ViewBag.Profile.ngaycap" tabindex="1" autofocus readonly>
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Chiều cao :</label>
-                                <input type="text" class="form-control" id="tenphim" name="chieucao" tabindex="1" value="@ViewBag.Profile.chieucao" required>
+                                <input type="text" class="form-control" id="tenphim" name="chieucao" tabindex="1" value="@ViewBag.Profile.chieucao" readonly>
                             </div>
 
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Cân nặng :</label>
-                                <input type="text" class="form-control" id="tenphim" name="cannang" value="@ViewBag.Profile.cannang" tabindex="1" autofocus required>
+                                <input type="text" class="form-control" id="tenphim" name="cannang" value="@ViewBag.Profile.cannang" tabindex="1" autofocus readonly>
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Số năm bộ đội :</label>
-                                <input type="text" class="form-control" id="tenphim" name="sonambodoi" tabindex="1" value="@ViewBag.Profile.sonambodoi" required>
+                                <input type="text" class="form-control" id="tenphim" name="sonambodoi" tabindex="1" value="@ViewBag.Profile.sonambodoi" readonly>
                             </div>
 
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Số năm TNXP :</label>
-                                <input type="text" class="form-control" id="tenphim" name="sonamtnxp" value="@ViewBag.Profile.sonamtnxp" tabindex="1" autofocus required>
+                                <input type="text" class="form-control" id="tenphim" name="sonamtnxp" value="@ViewBag.Profile.sonamtnxp" tabindex="1" autofocus readonly>
                             </div>
 
                         </div>

@@ -37,14 +37,6 @@ namespace ManagementStudent.Repositories
             obj.gender = user.gender;  
             obj.address = user.address;
             obj.fullname = user.fullname;
-            myDb.SaveChanges();
-        }
-
-        public void SVedit(User user)
-        {
-            var obj = myDb.users.FirstOrDefault(x => x.id_user == user.id_user);
-            obj.username = user.username;
-            obj.password = user.password;
             obj.nguontuyen = user.nguontuyen;
             obj.truongchuyen = user.truongchuyen;
             obj.dantoc = user.dantoc;
@@ -57,6 +49,15 @@ namespace ManagementStudent.Repositories
             obj.cannang = user.cannang;
             obj.sonambodoi = user.sonambodoi;
             obj.sonamtnxp = user.sonamtnxp;
+            myDb.SaveChanges();
+        }
+
+        public void SVedit(User user)
+        {
+            var obj = myDb.users.FirstOrDefault(x => x.id_user == user.id_user);
+            obj.username = user.username;
+            obj.password = user.password;
+            
             myDb.SaveChanges();
         }
 

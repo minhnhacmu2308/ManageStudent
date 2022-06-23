@@ -321,12 +321,12 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-6">
-                                                            <label for="category-film" class="col-form-label">Full name: <span style="color:red">* </span>:</label>
-                                                            <input type="text" class="form-control" id="daodien" name="fullname" value="@item.fullname" tabindex="3" required>
+                                                            <label for="category-film" class="col-form-label">Mã sinh viên :</label>
+                                                            <input type="text" class="form-control" id="dienvien" value="SV_2022_@item.id_user" name="sdt" tabindex="2" readonly required>
                                                         </div>
                                                         <div class="col-6">
-                                                            <label for="category-film" class="col-form-label">Địa chỉ: <span style="color:red">* </span>:</label>
-                                                            <input type="text" class="form-control" id="daodien" name="address" value="@item.address" tabindex="3" required>
+                                                            <label for="category-film" class="col-form-label">Full name: <span style="color:red">* </span>:</label>
+                                                            <input type="text" class="form-control" id="daodien" name="fullname" value="@item.fullname" tabindex="3" required>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -394,6 +394,97 @@
                                                                 }
                                                             </select>
                                                         </div>
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Địa chỉ: <span style="color:red">* </span>:</label>
+                                                            <input type="text" class="form-control" id="daodien" name="address" value="@item.address" tabindex="3" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Nguồn tuyển :</label>
+                                                            <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="nguontuyen" required>
+                                                                @if (item.nguontuyen != null)
+                                                                {
+                                                                    <option value="@item.nguontuyen" selected>@item.nguontuyen</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option value="" selected>Chọn nguồn tuyển</option>
+                                                                }
+                                                                <option value="Trúng tuyển">Trúng tuyển</option>
+                                                                <option value="Chuyển trường">Chuyển trường</option>
+                                                                <option value="Cử tuyển">Cử tuyển</option>
+                                                                <option value="Xét tuyển">Xét tuyển</option>
+                                                                <option value="Tuyển thẳng">Tuyển thẳng</option>
+                                                                <option value="Nguồn khác">Nguồn khác</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Trường chuyển :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="truongchuyen" value="@item.truongchuyen" tabindex="1" autofocus required>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Dân tộc :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="dantoc" tabindex="1" value="@item.dantoc" required>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Tôn giáo :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="tongiao" value="@item.tongiao" tabindex="1" autofocus required>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Quốc tịch :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="quoctinh" tabindex="1" value="@item.quoctinh" required>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Số CMND :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="cmnd" value="@item.cmnd" tabindex="1" autofocus required>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Nơi cấp :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="noicap" tabindex="1" value="@item.noicap" required>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Ngày cấp :</label>
+                                                            <input type="date" class="form-control" id="tenphim" name="ngaycap" value="@item.ngaycap" tabindex="1" autofocus required>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Chiều cao :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="chieucao" tabindex="1" value="@item.chieucao" required>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Cân nặng :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="cannang" value="@item.cannang" tabindex="1" autofocus required>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Số năm bộ đội :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="sonambodoi" tabindex="1" value="@item.sonambodoi" required>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Số năm TNXP :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="sonamtnxp" value="@item.sonamtnxp" tabindex="1" autofocus required>
+                                                        </div>
+
                                                     </div>
 
                                                 </div>

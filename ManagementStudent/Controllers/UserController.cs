@@ -124,6 +124,18 @@ namespace ManagementStudent.Controllers
             principal.address = form["address"];
             principal.grade = form["grade"];
             principal.status = 1;
+            principal.nguontuyen = form["nguontuyen"];
+            principal.truongchuyen = form["truongchuyen"];
+            principal.dantoc = form["dantoc"];
+            principal.tongiao = form["tongiao"];
+            principal.quoctinh = form["quoctinh"];
+            principal.cmnd = form["cmnd"];
+            principal.noicap = form["noicap"];
+            principal.ngaycap = form["ngaycap"];
+            principal.cannang = form["cannang"];
+            principal.chieucao = form["chieucao"];
+            principal.sonambodoi = form["sonambodoi"];
+            principal.sonamtnxp = form["sonamtnxp"];
             userRepository.edit(principal);
             return RedirectToAction("Index", new { msg = "1" });          
 
@@ -137,18 +149,7 @@ namespace ManagementStudent.Controllers
             principal.id_user = Int32.Parse(form["id_user"]);
             principal.username = form["username"];
             principal.password = form["password"];
-            principal.nguontuyen = form["nguontuyen"];
-            principal.truongchuyen = form["truongchuyen"];
-            principal.dantoc = form["dantoc"];
-            principal.tongiao = form["tongiao"];
-            principal.quoctinh = form["quoctinh"];
-            principal.cmnd = form["cmnd"];
-            principal.noicap = form["noicap"];
-            principal.ngaycap = form["ngaycap"];
-            principal.cannang = form["cannang"];
-            principal.chieucao = form["chieucao"];
-            principal.sonambodoi = form["sonambodoi"];
-            principal.sonamtnxp = form["sonamtnxp"];
+            
             userRepository.SVedit(principal);
             return RedirectToAction("Infor", new { msg = "1" });
         }
