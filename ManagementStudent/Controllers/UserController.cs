@@ -33,6 +33,14 @@ namespace ManagementStudent.Controllers
             return View();
         }
 
+        public ActionResult ChangePassword(string msg)
+        {
+            var userInfomatiom = (User)Session["USER"];
+            ViewBag.MSG = msg;
+            ViewBag.Profile = userRepository.getUserById(userInfomatiom.id_user);
+            return View();
+        }
+
         public ActionResult ListGiangVien(string msg)
         {
             ViewBag.MSG = msg;
@@ -147,7 +155,6 @@ namespace ManagementStudent.Controllers
             User principal = new User();
 
             principal.id_user = Int32.Parse(form["id_user"]);
-            principal.username = form["username"];
             principal.password = form["password"];
             
             userRepository.SVedit(principal);

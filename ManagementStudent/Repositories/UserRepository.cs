@@ -55,7 +55,6 @@ namespace ManagementStudent.Repositories
         public void SVedit(User user)
         {
             var obj = myDb.users.FirstOrDefault(x => x.id_user == user.id_user);
-            obj.username = user.username;
             obj.password = user.password;
             
             myDb.SaveChanges();

@@ -65,12 +65,12 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Tài khoản :</label>
-                                <input type="text" class="form-control" id="tenphim" name="username" tabindex="1" value="@ViewBag.Profile.username" required>
+                                <input type="text" class="form-control" id="tenphim" name="username" tabindex="1" value="@ViewBag.Profile.username" readonly>
                             </div>
 
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Mật khẩu :</label>
-                                <input type="text" class="form-control" id="tenphim" name="password" value="@ViewBag.Profile.password" tabindex="1" required>
+                                <input type="text" class="form-control" id="tenphim" name="password" value="@ViewBag.Profile.password" tabindex="1" readonly>
                             </div>
 
                         </div>
@@ -146,9 +146,6 @@
                             </div>
 
                         </div>
-                    </div>
-                    <div class="modal-footer" style="margin-top: 20px">
-                        <button style="width:100px" type="submit" class="btn btn-info"> Cập nhập</button>
                     </div>
                 </form>
             </div>
