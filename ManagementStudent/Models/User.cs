@@ -83,5 +83,7 @@ namespace ManagementStudent.Models
         public virtual Majors Majors { get; set; }
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
+
+        public virtual ICollection<Credit> Credits { get; set; }
     }
 }

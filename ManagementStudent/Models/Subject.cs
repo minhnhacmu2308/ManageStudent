@@ -20,5 +20,7 @@ namespace ManagementStudent.Models
         public int id_major { get; set; }
         public virtual Majors Majors { get; set; }
 
+        public virtual ICollection<Credit> Credits { get; set; }
+
     }
 }

@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Danh sách sinh viên môn học</h1>
+
+
+        <div class="card mb-4">
+            <div class="card-header">
+                @if (ViewBag.MSG != null)
+                {
+                    if (ViewBag.MSG == "1")
+                    {
+                        <div class="alert alert-success">
+                            <strong>Thành công</strong>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã sinh viên</th>
+                            <th>Họ tên</th>
+                            <th>Ngành</th>
+                            <th>Môn học đăng ký</th>
+                            <th>Tình trạng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var index = 0;
+                        }
+                        @foreach (var item in ViewBag.List)
+                        {
+                            index++;
+                            var idModelDel = "exampleModalDel" + item.id_credit;
+                        <tr>
+                            <td>@index</td>
+                            <td>SV_2022_@item.User.id_user</td>
+                            <td>@item.User.fullname</td>
+                            <td>@item.User.Majors.name</td>
+                            <td>@item.Subject.name</td>
+                            <td>
+                                @if (item.status == 0)
+                                {
+                                    <span>Đang chờ phê duyệt</span>
+                                }
+                                else
+                                {
+                                    <span>Đã được phê duyệt</span>
+                                }
+                            </td>
+                            <td>
+                                @if (item.status == 0)
+                                {
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDel" style="width:100px" class="btn btn-info">Phê duyệt</button>
+                                    <div class="modal fade" id="@idModelDel" tabindex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Phê duyệt</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    Sinh viên : @item.User.fullname đăng ký môn học : @item.Subject.name
+                                                    <form action="/Credit/Accept/@item.id_credit" method="post">
+                                                        <div class="modal-footer" style="margin-top: 20px">
+                                                            <button style="width:100px" type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">
+                                                                Đóng
+                                                            </button>
+                                                            <button style="width:100px" type="submit" class="btn btn-info"> Phê duyệt</button>
+
+                                                        </div>
+
+                                                    </form>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</main>
+

@@ -14,6 +14,16 @@ namespace ManagementStudent
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+            name: "đăng ký",
+            url: "dangky/{id}",
+            defaults: new { controller = "Credit", action = "Add", id = UrlParameter.Optional }
+);
+            routes.MapRoute(
+            name: "phê duyệt",
+            url: "pheduyet/{id}",
+            defaults: new { controller = "Credit", action = "Accept", id = UrlParameter.Optional }
+);
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

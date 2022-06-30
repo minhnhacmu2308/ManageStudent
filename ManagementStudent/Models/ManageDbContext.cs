@@ -34,6 +34,8 @@ namespace ManagementStudent.Models
 
         public DbSet<Feedback> feedbacks { get; set; }
 
+        public DbSet<Credit> credits { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 

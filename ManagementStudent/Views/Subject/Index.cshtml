@@ -55,13 +55,14 @@
                         {
                             index++;
                             var idModelDel = "exampleModalDel" + item.id_subject;
+                            var idModelDs = "exampleModalDs" + item.id_subject;
                             var idEx1 = "#exampleModalLabel" + item.id_subject;
                         <tr>
                             <td>@index</td>
                             <td>@item.name</td>
                             <td>@item.Majors.name</td>
                             <td>
-
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDs" style="width:180px" class="btn btn-warning"> Danh sách sinh viên</button>
                                 <button style="width:100px" type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="@idEx1">
                                     Sửa
@@ -97,9 +98,60 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="modal fade" id="@idModelDs" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Danh sách sinh viên đăng ký</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <table class="table table-bordered border-primary">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>STT</th>
+                                                            <th>Mã sinh viên</th>
+                                                            <th>Họ tên</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @{
+                                                            var stt = 0;
+                                                        }
+                                                        @{ var sv = new ManagementStudent.Repositories.CreditRepository().getSub(item.id_subject);}
+                                                        @foreach (var svs in sv)
+                                                        {
+                                                            stt++;
+                                                            <tr>
+                                                                <td>@stt</td>
+                                                                <td>SV_2022_@svs.User.id_user</td>
+                                                                <td>@svs.User.fullname</td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                                <form action="/Subject/Delete" method="post">
+                                                    <div class="modal-footer" style="margin-top: 20px">
+                                                        <button style="width:100px" type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">
+                                                            Đóng
+                                                        </button>
+
+                                                    </div>
+
+                                                </form>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
-                            var idEx = "exampleModalLabel" + item.id_subject;
+                                                   var idEx = "exampleModalLabel" + item.id_subject;
                             <div class="modal fade" id="@idEx" tabindex="-1"
                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">

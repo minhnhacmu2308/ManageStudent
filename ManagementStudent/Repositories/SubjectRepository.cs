@@ -15,6 +15,11 @@ namespace ManagementStudent.Repositories
             return myDb.subjects.ToList();
         }
 
+        public List<Subject> getCredit(int idMajor)
+        {
+            return myDb.subjects.Where(x => x.id_major == idMajor).ToList();
+        }
+
         public Subject getSubjectByName(string name,int idMajor)
         {
             return myDb.subjects.FirstOrDefault(x => x.name == name && x.id_major ==idMajor);

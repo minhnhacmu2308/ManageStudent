@@ -131,6 +131,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
+    <Compile Include="Controllers\CreditController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\ScoreController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -171,7 +172,12 @@
     <Compile Include="Migrations\202206191422190_updatedb.designer.cs">
       <DependentUpon>202206191422190_updatedb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206261545239_credits.cs" />
+    <Compile Include="Migrations\202206261545239_credits.designer.cs">
+      <DependentUpon>202206261545239_credits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Credit.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Majors.cs" />
     <Compile Include="Models\ManageDbContext.cs" />
@@ -191,6 +197,7 @@
     <Compile Include="Repositories\FeedbackRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\ScheduleRepository.cs" />
+    <Compile Include="Repositories\CreditRepository.cs" />
     <Compile Include="Repositories\ScoreRepository.cs" />
     <Compile Include="Repositories\SessionRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
@@ -795,6 +802,9 @@
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\Feedback\Add.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\Credit\Index.cshtml" />
+    <Content Include="Views\Credit\List.cshtml" />
+    <Content Include="Views\Credit\Regist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -836,6 +846,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206191422190_updatedb.resx">
       <DependentUpon>202206191422190_updatedb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206261545239_credits.resx">
+      <DependentUpon>202206261545239_credits.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Regist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Danh sách môn học đã đăng ký</h1>
+
+
+        <div class="card mb-4">
+            <div class="card-header">
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên môn</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var index = 0;
+                        }
+                        @foreach (var item in ViewBag.List)
+                        {
+                            index++;
+                            <tr>
+                                <td>@index</td>
+                                <td>@item.Subject.name</td>
+                                <td>
+                                    @if (item.status == 0)
+                                    {
+                                        <span>Đang chờ phê duyệt</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Đã được phê duyệt</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</main>
+
