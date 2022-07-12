@@ -19,6 +19,31 @@ namespace ManagementStudent
             defaults: new { controller = "Credit", action = "Add", id = UrlParameter.Optional }
 );
             routes.MapRoute(
+            name: "export",
+            url: "export/{lop}",
+            defaults: new { controller = "User", action = "Export", lop = UrlParameter.Optional }
+);
+            routes.MapRoute(
+            name: "exportK",
+            url: "exportK/{lop}",
+            defaults: new { controller = "User", action = "ExportK", lop = UrlParameter.Optional }
+);
+            routes.MapRoute(
+            name: "exportKh",
+            url: "exportKh/{lop}",
+            defaults: new { controller = "User", action = "ExportKh", lop = UrlParameter.Optional }
+);
+            routes.MapRoute(
+ name: "exportTt",
+ url: "exportTt/{lop}",
+ defaults: new { controller = "Credit", action = "Export", lop = UrlParameter.Optional }
+);
+            routes.MapRoute(
+           name: "exports",
+           url: "exports/{id}",
+           defaults: new { controller = "User", action = "Exports", id = UrlParameter.Optional }
+);
+            routes.MapRoute(
             name: "phê duyệt",
             url: "pheduyet/{id}",
             defaults: new { controller = "Credit", action = "Accept", id = UrlParameter.Optional }

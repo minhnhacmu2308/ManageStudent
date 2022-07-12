@@ -177,8 +177,10 @@
       <DependentUpon>202206261545239_credits.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CreditDto.cs" />
     <Compile Include="Models\Credit.cs" />
     <Compile Include="Models\Day.cs" />
+    <Compile Include="Models\FeedbackDto.cs" />
     <Compile Include="Models\Majors.cs" />
     <Compile Include="Models\ManageDbContext.cs" />
     <Compile Include="Models\Feedback.cs" />
@@ -188,6 +190,9 @@
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\Score.cs" />
     <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\SinhVienKhoasDto.cs" />
+    <Compile Include="Models\SinhVienSDto.cs" />
+    <Compile Include="Models\SinhVienDto.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -805,6 +810,16 @@
     <Content Include="Views\Credit\Index.cshtml" />
     <Content Include="Views\Credit\List.cshtml" />
     <Content Include="Views\Credit\Regist.cshtml" />
+    <Content Include="Views\User\Class.cshtml" />
+    <Content Include="Views\User\Major.cshtml" />
+    <Content Include="Views\User\Khoas.cshtml" />
+    <Content Include="Views\User\Khoa.cshtml" />
+    <Content Include="Views\Feedback\ThongKe.cshtml" />
+    <Content Include="Views\Credit\ThongKe.cshtml" />
+    <Content Include="Views\Credit\Nam.cshtml" />
+    <Content Include="Views\Credit\Hoc.cshtml" />
+    <Content Include="Views\User\Trash.cshtml" />
+    <Content Include="Views\Score\Indexss.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

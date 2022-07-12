@@ -25,171 +25,229 @@
                     }
 
                 }
-                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                        data-bs-target="#exampleModalAdd">
-                    Thêm mới
-                </button>
+                
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>STT</th>
-
-                            <th>Tên sinh viên</th>
-                            <th>Ngành</th>
-                            <th>Tên môn học </th>
-                            <th>Điểm học kì 1</th>
-                            <th>Thang điểm kì 1</th>
-                            <th>Điểm học kì 2</th>
-                            <th>Thang điểm kì 2</th>
+                            <th>Mã sinh viên</th>
+                            <th>Tên Sinh viên</th>
+                            <th>Lớp </th>
+                            <th>Ngành </th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>STT</th>
-                            <th>Tên Hoc Hàm</th>
-                            <th>Action</th>
+                           
                         </tr>
                     </tfoot>
                     <tbody>
                         @{
                             var index = 0;
                         }
-                        @foreach (var item in Model)
+                        @foreach (var item in ViewBag.listStudent)
                         {
                             index++;
-                            var idModelDel = "exampleModalDel" + item.id_score;
-                            var idEx1 = "#exampleModalLabel" + item.id_score;
-                        <tr>
-                            <td>@index</td>
+                            var idModelDel = "exampleModalDel" + item.id_user;
+                            var idEx1 = "#exampleModalLabel" + item.id_user;
+                            <tr>
+                                <td>SV_2022_@item.id_user</td>
+                                <td>@item.fullname</td>
+                                <td>@item.grade</td>
+                                <td>@item.Majors.name</td>
+                                <td style="width : 420px !important">
 
-                            <td>@item.User.fullname</td>
-                            <td>@item.User.Majors.name</td>
-                            <td>@item.Subject.name</td>
-                            <td>@item.point</td>
-                            @if (item.point < 4)
-                            {
-                                <td>F</td>
-                            }
-                            else if (item.point < 5)
-                            {
-                                <td>D</td>
-                            }
-                            else if (item.point < 6)
-                            {
-                                <td>C</td>
-                            }
-                            else if (item.point < 7)
-                            {
-                                <td>B</td>
-                            }
-                            else if (item.point >= 8)
-                            {
-                                <td>A</td>
-                            }
-                            <td>@item.point2</td>
-                            @if (item.point2 < 4)
-                            {
-                                <td>F</td>
-                            }
-                            else if (item.point2 < 5)
-                            {
-                                <td>D</td>
-                            }
-                            else if (item.point2 < 6)
-                            {
-                                <td>C</td>
-                            }
-                            else if (item.point2 < 7)
-                            {
-                                <td>B</td>
-                            }
-                            else if (item.point2 >= 8)
-                            {
-                                <td>A</td>
-                            }
-                            <td style="width : 220px !important">
+                                    <button style="width:180px" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="@idEx1">
+                                        Nhập điểm
+                                    </button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDel" style="width:180px" class="btn btn-danger"> Xem điểm</button>
+                                    <div class="modal fade" id="@idModelDel" tabindex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Bảng điểm của sinh viên</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
 
-                                <button style="width:80px" type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="@idEx1">
-                                    Sửa
-                                </button>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDel" style="width:80px" class="btn btn-danger"> Xóa</button>
-                                <div class="modal fade" id="@idModelDel" tabindex="-1"
-                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn xóa ?</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                            </div>
+                                                <div class="modal-body">
+                                                    <table class="table table-bordered border-primary">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>STT</th>
+                                                                <th>Môn học</th>
+                                                                <th>Điểm học kỳ I</th>
+                                                                <th>Điểm học kỳ II</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
 
-                                            <div class="modal-body">
-                                                Điểm @item.Subject.name  của sinh viên @item.User.fullname
-                                                <form action="/Score/Delete" method="post">
-                                                    <input type="hidden" class="form-control" id="id" name="id" value="@item.id_score">
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>Đường lối cách mạng</td>
+                                                                <td>7.8</td>
+                                                                <td>6.8</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>Lập trình cơ sở</td>
+                                                                <td>7.8</td>
+                                                                <td>6.8</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td>Lập trình website</td>
+                                                                <td>7.8</td>
+                                                                <td>6.8</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td>Python</td>
+                                                                <td>7.8</td>
+                                                                <td>6.8</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>5</td>
+                                                                <td>Toán xác suất</td>
+                                                                <td>7.8</td>
+                                                                <td>6.8</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>6</td>
+                                                                <td>Tiếng Anh</td>
+                                                                <td>7.8</td>
+                                                                <td>6.8</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
                                                     <div class="modal-footer" style="margin-top: 20px">
                                                         <button style="width:100px" type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">
                                                             Đóng
                                                         </button>
-                                                        <button style="width:100px" type="submit" class="btn btn-danger"> Xóa</button>
 
                                                     </div>
 
-                                                </form>
+
+
+                                                </div>
 
                                             </div>
-
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                            var idEx = "exampleModalLabel" + item.id_score;
-                    <div class="modal fade" id="@idEx" tabindex="-1"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Sửa </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form enctype="multipart/form-data" action="/Score/Update" method="post">
-                                        <div class="col">
+                                    @{var idEx = "exampleModalLabel" + item.id_user; }
+                                    <div class="modal fade" id="@idEx" tabindex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Nhập điểm cho sinh viên</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
 
-                                            <div class="col-12">
-                                                <label for="category-film" class="col-form-label">Sinh viên: @item.User.fullname </label>
-                                                <input type="hidden" class="form-control" id="daodien" readonly name="student" value="@item.id_user " tabindex="3" required>
-                                            </div>
-                                            <div class="col-12">
-                                                <label for="category-film" class="col-form-label">Môn học: @item.Subject.name</label>
-                                                <input type="hidden" class="form-control" id="daodien" readonly name="subject" value="@item.id_subject" tabindex="3" required>
-                                            </div>
-                                            <div class="col-12">
-                                                <label for="category-film" class="col-form-label">Điểm học kì 1: <span style="color:red">* </span>:</label>
-                                                <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" value="@item.point" required>
-                                            </div>
-                                            <div class="col-12">
-                                                <label for="category-film" class="col-form-label">Điểm học kì 2: <span style="color:red">* </span>:</label>
-                                                <input type="number" class="form-control" id="daodien" name="point2" min="1" max="10" tabindex="3" value="@item.point2" required>
+                                                <div class="modal-body">
+                                                    <table class="table table-bordered border-primary">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>STT</th>
+                                                                <th>Môn học</th>
+                                                                <th>Điểm học kỳ I</th>
+                                                                <th>Điểm học kỳ II</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>Đường lối cách mạng</td>
+                                                                <td>
+                                                                    <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>Lập trình cơ sở</td>
+                                                                <td>
+                                                                    <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td>Lập trình website</td>
+                                                                <td>
+                                                                    <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td>Python</td>
+                                                                <td>
+                                                                    <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>5</td>
+                                                                <td>Toán xác suất</td>
+                                                                <td>
+                                                                    <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>6</td>
+                                                                <td>Tiếng Anh</td>
+                                                                <td>
+                                                                    <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <div class="modal-footer" style="margin-top: 20px">
+                                                        <button style="width:100px" type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">
+                                                            Đóng
+                                                        </button>
+                                                        <button style="width:100px" type="button" class="btn btn-warning"
+                                                                data-bs-dismiss="modal">
+                                                            Nhập
+                                                        </button>
+                                                    </div>
+
+
+
+                                                </div>
+
                                             </div>
                                         </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            
 
-
-                                        <div class="modal-footer">
-                                            <button style="width:100px" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                                            <button style="width:100px" type="submit" class="btn btn-primary">Sửa </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                             <!-- Modal Update-->
                         }
@@ -200,60 +258,6 @@
         </div>
     </div>
 </main>
-<!-- Modal Add-->
-<div class="modal fade" id="exampleModalAdd" tabindex="-1"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Thêm </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form enctype="multipart/form-data" action="/Score/Add" method="post">
-                    <div class="col">
 
-                        <div class="col-12">
-                            <label for="category-film" class="col-form-label">Chọn Sinh viên: <span style="color:red">* </span>:</label>
-                            <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="name" required>
-                                <option value="" selected>Chọn Sinh viên</option>
-                                @foreach (var item1 in ViewBag.listStudent)
-                                {
-                                    <option value="@item1.id_user">@item1.fullname</option>
-
-                                }
-                            </select>
-                        </div>
-                        <div class="col-12">
-                            <label for="category-film" class="col-form-label">Chọn môn học: <span style="color:red">* </span>:</label>
-                            <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="subject" required>
-                                <option value="" selected>Chọn môn học</option>
-                                @foreach (var item2 in ViewBag.listSubject)
-                                {
-                                    <option value="@item2.id_subject">@item2.name</option>
-
-                                }
-                            </select>
-                        </div>
-                        <div class="col-12">
-                            <label for="category-film" class="col-form-label">Điểm học kì 1: <span style="color:red">* </span>:</label>
-                            <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
-                        </div>
-                        <div class="col-12">
-                            <label for="category-film" class="col-form-label">Điểm học kì 2: <span style="color:red">* </span>:</label>
-                            <input type="number" class="form-control" id="daodien" name="point2" min="1" max="10" tabindex="3"  required>
-                        </div>
-                    </div>
-
-
-                    <div class="modal-footer">
-                        <button style="width:100px" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                        <button style="width:100px" type="submit" class="btn btn-primary">Thêm </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 

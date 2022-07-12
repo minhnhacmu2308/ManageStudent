@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "Class";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <form method="POST" action="/User/Class" class="register-form" id="register-form">
+                    <div class="row" style="justify-content:space-around !important">
+                        <div class="col-5">
+                            <label for="category-film"
+                                   class="col-form-label">Lớp:</label>
+                            <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="lop" required>
+                                <option value="" selected>Chọn lớp</option>
+                                <option value="Xác suất thống kê">Xác suất thống kê</option>
+                                <option value="Lập trình web">Lập trình web</option>
+                                <option value="Tin học đại cương">Tin học đại cương</option>
+                                <option value="Lập trình android">Lập trình android</option>
+                                <option value="Mạng máy tính">Mạng máy tính</option>
+                                <option value="Thể dục thể chất">Thể dục thể chất</option>
+                                <option value="Toán cao cấp">Toán cao cấp</option>
+                                <option value="Toán rời rạc">Toán rời rạc</option>
+                                <option value="Kinh tế vĩ mô">Kinh tế vĩ mô</option>
+                                <option value="Đường lối cách mạng Mac-lenin 1">Đường lối cách mạng Mac-lenin 1</option>
+                                <option value="Đường lối cách mạng Mac-lenin 2">Đường lối cách mạng Mac-lenin 2</option>
+                                <option value="Tư tưởng Hồ Chí Minh">Tư tưởng Hồ Chí Minh</option>
+                                <option value="Đường lối cách mạng">Đường lối cách mạng</option>
+                                <option value="Kĩ năng mềm">Kĩ năng mềm</option>
+                                <option value="Kinh tế chính trị">Kinh tế chính trị</option>
+                                <option value="Tiếng anh chuyên ngành">Tiếng anh chuyên ngành</option>
+                                <option value="Tiếng anh 1">Tiếng anh 1</option>
+                                <option value="Tiếng anh 2">Tiếng anh 2</option>
+                                <option value="Tiếng anh 3">Tiếng anh 3</option>
+                            </select>
+                        </div>
+                        <div class="col-1">
+                            <label for="category-film"
+                                   class="col-form-label"></label><br />
+                            <button type="submit" class="btn btn-success" style="margin-top:10px;width : 200px !important">
+                                Thống kê
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            @if (ViewBag.List == null)
+            {
+
+            }
+            else
+            {
+                <div style="margin:20px auto;">
+                    <h3>Danh sách sinh viên</h3>
+                </div>
+                <a href="/export/@ViewBag.lop" class="btn btn-warning" style="margin-bottom: 10px;margin-top : -10px;margin-left : 5px;width : 200px !important">
+                    Xuất Excel
+                </a>
+            }
+            <div class="card-body" style="margin-top : -15px !important">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Mã sinh viên</th>
+                            <th>Tên Sinh viên</th>
+                            <th>Giới tính </th>
+                            <th>Ngành </th>
+                        </tr>
+                    </thead>
+                    @if (ViewBag.List == null)
+                    {
+                        <tbody></tbody>
+                    }
+                    else
+                    {
+                        <tbody>
+                            @foreach (var item in ViewBag.List)
+                            {
+
+                                <tr>
+                                    <td>SV_2022_@item.id_user</td>
+                                    <td>@item.fullname</td>
+                                    @if (item.gender == 0)
+                                    {
+                                        <td>Nữ</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Nam</td>
+
+                                    }
+                                    <td>@item.Majors.name</td>
+                                </tr>
+                            }
+                        </tbody>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+

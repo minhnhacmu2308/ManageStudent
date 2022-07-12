@@ -1,0 +1,10 @@
+Thống kê danh sách sinh viên theo khóa, theo khoa,theo lớp, theo ngành
+Thống kê danh sách sinh viên đăng ký học phân theo năm học & học kỳ 
+Thống kê danh sách học phân sinh viên đã hoàn thành, chưa hoàn thành, đang đăng ký 
+Xem bảng điểm tích lũy của từng sinh viên Xem bảng điểm của sinh viên theo học phân theo khóa, theo khoa 
+Tất cả các bảng thống kê đều hỗ trợ xuất ra Excel  
+Đưa website lên hosting 
+Thống kê các góp ý của sinh viên chưa được phản hồi
+
+
+

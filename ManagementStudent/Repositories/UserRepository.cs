@@ -15,6 +15,16 @@ namespace ManagementStudent.Repositories
             return myDb.users.Where(x => x.Role.id_role == 3).ToList();
         }
 
+        public List<User> getClass(string lop)
+        {
+            return myDb.users.Where(x => x.grade.Equals(lop)).ToList();
+        }
+
+        public List<User> getMajor(int id)
+        {
+            return myDb.users.Where(x => x.id_major == id).ToList();
+        }
+
         public List<User> getListGiangVien()
         {
             return myDb.users.Where(x => x.Role.id_role == 2).ToList();

@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "ThongKe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h4 class="mt-1">Danh sách góp ý chưa phản hồi</h4>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <a href="/Feedback/Export" class="btn btn-warning" style="margin-bottom: 10px;margin-top : -10px;margin-left : 5px;width : 200px !important">
+                    Xuất Excel
+                </a>
+            </div>
+
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Sinh viên</th>
+                            <th>Tiêu đề</th>
+                            <th>Nội dung</th>
+                            <th>Ngày gửi</th>
+                            <th>Tình trạng</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @{ var stt = 1;}
+                        <input type="hidden" value="@ViewBag.List.Count" id="dodai" />
+                        @foreach (var item in ViewBag.List)
+                        {
+                            var nameModelDes = "exampleModalDes" + item.id_feedBack;
+                    <tr>
+                        <td style="width:10px">@stt</td>
+                        <td>
+                            @item.User.fullname
+                        </td>
+                        <td>
+                            @item.title
+                        </td>
+                        <td>
+                            <a href="" data-bs-toggle="modal" data-bs-target="#@nameModelDes">Xem</a>
+                        </td>
+                        <td>
+                            @String.Format("{0:dd-MM-yyyy}", item.created)
+                        </td>
+                        <td>
+                            <psan>Chưa phản hồi</psan>
+                        </td>
+                        <!-- Modal Descrip-->
+                        <div class="modal fade" id="@nameModelDes" tabindex="-1"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">@item.title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>@Html.Raw(item.content)</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </tr>
+                            stt++;
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+
+            CKEDITOR.replace("editor");
+
+    </script>
+    <script>
+            var dodai = document.getElementById("dodai").value;
+
+            for (var i = 1; i <= dodai; i++) {
+                var name = "comment" + i
+                CKEDITOR.replace(name);
+            }
+    </script>
+</main>
+

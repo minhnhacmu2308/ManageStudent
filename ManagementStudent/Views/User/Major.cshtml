@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Major";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <form method="POST" action="/User/Major" class="register-form" id="register-form">
+                    <div class="row" style="justify-content:space-around !important">
+                        <div class="col-5">
+                            <label for="category-film"
+                                   class="col-form-label">Lớp:</label>
+                            <select class="form-select" aria-label="Default select example" id="id_major" tabindex="8" name="nganh" required>
+                                <option value="" selected>Chọn nghành</option>
+                                @foreach (var item in ViewBag.listMajor)
+                                {
+                                    <option value="@item.id_major">@item.name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-1">
+                            <label for="category-film"
+                                   class="col-form-label"></label><br />
+                            <button type="submit" class="btn btn-success" style="margin-top:10px;width : 200px !important">
+                                Thống kê
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            @if (ViewBag.List == null)
+            {
+
+            }
+            else
+            {
+                <div style="margin:20px auto;">
+                    <h3>Danh sách sinh viên</h3>
+                </div>
+                <a href="/exports/@ViewBag.nganh" class="btn btn-warning" style="margin-bottom: 10px;margin-top : -10px;margin-left : 5px;width : 200px !important">
+                    Xuất Excel
+                </a>
+            }
+            <div class="card-body" style="margin-top : -15px !important">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Mã sinh viên</th>
+                            <th>Tên Sinh viên</th>
+                            <th>Giới tính </th>
+                            <th>Lớp</th>
+                        </tr>
+                    </thead>
+                    @if (ViewBag.List == null)
+                    {
+                        <tbody></tbody>
+                    }
+                    else
+                    {
+                        <tbody>
+                            @foreach (var item in ViewBag.List)
+                            {
+
+                                <tr>
+                                    <td>SV_2022_@item.id_user</td>
+                                    <td>@item.fullname</td>
+                                    @if (item.gender == 0)
+                                    {
+                                        <td>Nữ</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Nam</td>
+
+                                    }
+                                    <td>@item.grade</td>
+                                </tr>
+                            }
+                        </tbody>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
