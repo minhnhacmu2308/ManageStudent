@@ -820,6 +820,7 @@
     <Content Include="Views\Credit\Hoc.cshtml" />
     <Content Include="Views\User\Trash.cshtml" />
     <Content Include="Views\Score\Indexss.cshtml" />
+    <Content Include="Views\Score\Index - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -21,6 +21,10 @@ namespace ManagementStudent.Repositories
             myDb.SaveChanges();
         }
 
+        public List<Score> getSub(int idSub)
+        {
+            return myDb.scores.Where(x => x.id_subject == idSub).ToList();
+        }
         public void update(Score score)
         {
             var obj = myDb.scores.FirstOrDefault(x => x.id_user == score.id_user);
