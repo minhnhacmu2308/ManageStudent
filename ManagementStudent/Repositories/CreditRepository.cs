@@ -26,7 +26,7 @@ namespace ManagementStudent.Repositories
 
         public List<Credit> getSub(int idSub)
         {
-            return myDb.credits.Where(x => x.id_subject == idSub && x.status == 1).ToList();
+            return myDb.credits.Where(x => x.id_subject == idSub && x.status == 1 ).ToList();
         }
 
         public void add(Credit credit)

@@ -47,6 +47,11 @@ namespace ManagementStudent.Repositories
             return myDb.scores.FirstOrDefault(x => x.id_user == id);
         }
 
+        public Score getScoreByIdAndIdSubject(int id, int idSubject)
+        {
+            return myDb.scores.FirstOrDefault(x => x.id_user == id && x.id_subject == idSubject);
+        }
+
         public Score checkPointExist(Score score)
         {
             var obj =  myDb.scores.FirstOrDefault(x => x.id_subject == score.id_subject && x.id_user == score.id_user && x.point.ToString() != null);

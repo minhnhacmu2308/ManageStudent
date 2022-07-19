@@ -523,3 +523,6 @@ D:\.NET MVC\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migratio
 D:\.NET MVC\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.syll.resources
 D:\.NET MVC\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.updatedb.resources
 D:\.NET MVC\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.credits.resources
+D:\Project Asp.Net\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.syll.resources
+D:\Project Asp.Net\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.updatedb.resources
+D:\Project Asp.Net\ManageStudent\ManagementStudent\obj\Debug\ManagementStudent.Migrations.credits.resources

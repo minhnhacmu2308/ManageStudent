@@ -76,13 +76,15 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @{ var listKQ = new ManagementStudent.Repositories.ScoreRepository().getSub(item.id_subject); }
+                                                        @{ var listKQ = new ManagementStudent.Repositories.ScoreRepository().getSub(item.id_subject);
+                                               
+                                                        }
                                                         @foreach (var kq in listKQ)
                                                         {
                                                         <tr>
                                                             <td>SV_2022_@kq.User.id_user</td>
                                                             <td>@kq.User.fullname</td>
-                                                            <td>@kq.point1</td>
+                                                            <td>@kq.point</td>
                                                             <td>@kq.point2</td>
                                                         </tr>
                                                         }
@@ -114,50 +116,69 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                             </div>
-
-                                            <div class="modal-body">
-                                                <table class="table table-bordered border-primary">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Mã sinh viên</th>
-                                                            <th>Họ tên</th>
-                                                            <th>Điểm học kỳ I</th>
-                                                            <th>Điểm học kỳ II</th>
-                                                        </tr>
-                                                    </thead>
+                                            <form action="/Score/Add" method="post">
+                                                <input type="hidden"  name="idSubject" value="@item.id_subject"/>
+                                                <div class="modal-body">
+                                                    <table class="table table-bordered border-primary">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Mã sinh viên</th>
+                                                                <th>Họ tên</th>
+                                                                <th>Điểm học kỳ I</th>
+                                                                <th>Điểm học kỳ II</th>
+                                                            </tr>
+                                                        </thead>
+                                                      @*  code handel add score*@
                                                     <tbody>
-                                                        @{ var listSV = new ManagementStudent.Repositories.CreditRepository().getSub(item.id_subject); }
+                                                        @{ List<ManagementStudent.Models.Credit> listSV = new ManagementStudent.Repositories.CreditRepository().getSub(item.id_subject);
+
+                                                        }
+
                                                         @foreach (var sv in listSV)
                                                         {
-                                                        <tr>
-                                                            <td>SV_2022_@sv.User.id_user</td>
-                                                            <td>@sv.User.fullname</td>
-                                                            <td>
-                                                                <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" class="form-control" id="daodien" name="point" min="1" max="10" tabindex="3" required>
-                                                            </td>
-                                                        </tr>
+                                                            var check = new ManagementStudent.Repositories.ScoreRepository().getScoreByIdAndIdSubject(sv.User.id_user, item.id_subject);
+                                                            if (check == null)
+                                                            {
+                                                                var nameIdUser = "idUser" + sv.User.id_user;
+                                                                var namePoint1 = "point1" + sv.User.id_user;
+                                                                var namePoint2 = "point2" + sv.User.id_user;
+                                                                <tr>
+                                                                    <td>SV_2022_@sv.User.id_user  <input type="hidden" value="@sv.User.id_user" name="@nameIdUser" /></td>
+                                                                    <td>@sv.User.fullname</td>
+                                                                    <td>
+                                                                        <input type="number" class="form-control" value="" name="@namePoint1" min="1" max="10" tabindex="3" required>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="number" class="form-control" value="" name="@namePoint2" min="1" max="10" tabindex="3" required>
+                                                                    </td>
+                                                                </tr>
+                                                            }
+                                                            else
+                                                            {
+
+                                                            }
+
                                                         }
+
+                                                        @*  code handel add score*@
                                                     </tbody>
-                                                </table>
+                                                    </table>
 
-                                                <div class="modal-footer" style="margin-top: 20px">
-                                                    <button style="width:100px" type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">
-                                                        Đóng
-                                                    </button>
-                                                    <button style="width:100px" type="button" class="btn btn-warning"
-                                                            data-bs-dismiss="modal">
-                                                        Nhập
-                                                    </button>
+                                                    <div class="modal-footer" style="margin-top: 20px">
+                                                        <button style="width:100px" type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">
+                                                            Đóng
+                                                        </button>
+                                                        <button style="width:100px" type="submit" class="btn btn-warning"
+                                                                data-bs-dismiss="modal">
+                                                            Nhập
+                                                        </button>
+                                                    </div>
+
+
+
                                                 </div>
-
-
-
-                                            </div>
-
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
